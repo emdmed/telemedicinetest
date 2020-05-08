@@ -7,25 +7,38 @@ var apiKey;
 var sessionId;
 var token;
 
-function getCredentials(){
+function createSession(){
     $.ajax({
-        url: "/credentials",
+        url: "/createsession",
         method: "GET",
         success: function(res){
             let data = res;
             apiKey = data.apiKey;
             sessionId = data.sessionId;
-            token = data.token;
-
-            console.log("success!")
-            
-            console.log("Connecting...")
-            
+            console.log("Session created! ", sessionId);
             // (optional) add server code here
             initializeSession();
         }
     })
 }
+
+$("body").on("click", "#medico", function(){
+    createSession();
+})
+
+$("body").on("click", "#paciente", function(){
+    $.ajax({
+        url: "/createtoken",
+        method: "GET",
+        success: function(res){
+            let data = res;
+            apiKey = data.apiKey;
+            sessionId = data.sessionId;
+            token = data.sessionToken;
+        }
+    })
+})
+
 
 
 
