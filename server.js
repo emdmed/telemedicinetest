@@ -44,7 +44,7 @@ app.get("/createsession", function(req, res){
 
 app.get("/createtoken", function(req, res){
     let token = opentok.generateToken(sessionInfo);
-    console.log("patient video ", "token ",token, "session , "sessionInfo);
+    console.log("patient video ", "token ",token, "session ", sessionInfo);
     res.json({sessionId: sessionInfo, token, apiKey}).end();
 })
 
