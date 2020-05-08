@@ -35,7 +35,7 @@ $("body").on("click", "#paciente", function(){
             let data = res;
             apiKey = data.apiKey;
             sessionId = data.sessionId;
-            token = data.sessionToken;
+            token = data.token;
 
             initializeSession();
         }
