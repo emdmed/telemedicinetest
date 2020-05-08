@@ -36,6 +36,8 @@ $("body").on("click", "#paciente", function(){
             apiKey = data.apiKey;
             sessionId = data.sessionId;
             token = data.sessionToken;
+
+            initializeSession();
         }
     })
 })
