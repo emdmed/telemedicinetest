@@ -16,11 +16,13 @@ var session = OT.initSession(apiKey, sessionId);
 var publisher = OT.initPublisher();
 session.connect(token, function(err) {
    // publish publisher
-   
+   session.publish(publisher);
 });
   
 // create subscriber
-
+session.on('streamCreated', function(event) {
+   session.subscribe(event.stream);
+});
 
 </script>
 </body>

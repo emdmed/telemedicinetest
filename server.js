@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 //ROUTES
 
 app.get("/", function(req, res){
-    res.sendFile(__dirname + "/client/blank.html");
+    res.sendFile(__dirname + "/videoclient/index.html");
 })
 
 
