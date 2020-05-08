@@ -17,6 +17,7 @@ const remotemongo = "mongodb://admin:sanatorio123@ds054118.mlab.com:54118/labos"
 mongoose.connect(remotemongo, {useNewUrlParser: false});
 
 let testurl = "http://localhost:3000";
+let url = "https://telemedclinicas.herokuapp.com";
 
 let sessionInfo;
 
@@ -68,9 +69,9 @@ app.post("/contact", async function(req, res){
         console.log(storeUser[0]);
         console.log("stored user ", storeUser[0].type, storeUser[0].service );
         if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
-            res.send({url: `${testurl}/dermato.html`, storeUser}).status(200).end();
+            res.send({url: `${url}/dermato.html`, storeUser}).status(200).end();
         } else {
-            res.send({url: `${testurl}/waitingroom.html`, storeUser}).status(200).end();
+            res.send({url: `${url}/waitingroom.html`, storeUser}).status(200).end();
         }
     }
 
