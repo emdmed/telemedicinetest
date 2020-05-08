@@ -27,7 +27,7 @@ app.get("/credentials", function(req, res){
     opentok.createSession(function(err, session) {
         if (err) return console.log(err);
 
-        token = opentok.generateToken(session.sessionId);
+        token = session.generateToken();
 
         console.log("new session created ", session.sessionId);
 
