@@ -10,8 +10,6 @@ const server = require("http").createServer(app);
 
 let sessionInfo;
 
-let token;
-
 app.use(express.static(__dirname + "/videoclient"));
 
 server.listen(process.env.PORT || 3000);
@@ -34,6 +32,7 @@ app.get("/createsession", function(req, res){
         console.log("new session created ", session.sessionId);
 
         sessionInfo = session.sessionId;
+        console.log("doctor session ", sessionInfo);
 
         res.json({
             apiKey,
@@ -45,6 +44,7 @@ app.get("/createsession", function(req, res){
 
 app.get("/createtoken", function(req, res){
     let token = opentok.generateToken(sessionInfo);
+    console.log("patient video ",token, sessionInfo);
     res.json({sessionId: sessionInfo, token, apiKey}).end();
 })
 
