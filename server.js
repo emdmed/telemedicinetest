@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const server = require("http").createServer(app);
 
-app.use(express.static(__dirname + "/client"));
+app.use(express.static(__dirname + "/videoclient"));
 
 server.listen(process.env.PORT || 3000);
 console.log("Server running...")
