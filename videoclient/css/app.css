@@ -30,3 +30,16 @@ body, html {
     border: 3px solid white;
     border-radius: 3px;
 }
+
+#init_dermato_room{
+    position: absolute;
+    top: 10px;
+    left:5px;
+    background-color: #97658d;
+    color: white;
+    border-style: solid;
+    border-color: #97658d;
+    padding: 9px;
+    border-radius: 10px;
+    z-index: 100;
+}

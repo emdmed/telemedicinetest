@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164970475-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-164970475-1');
+    </script>
+
+
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="it">
+  <meta name="keywords" content="Triage">
+  
+  <meta name="author" content="themefisher.com">
+
+  <title>Triagix - Triage automático</title>
+
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Animate Css -->
+  <link rel="stylesheet" href="plugins/animate-css/animate.css">
+  <!-- Icon Font css -->
+  <link rel="stylesheet" href="plugins/fontawesome/css/all.css">
+  <link rel="stylesheet" href="plugins/fonts/Pe-icon-7-stroke.css">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;400&display=swap" rel="stylesheet">
+  <!-- Themify icon Css -->
+  <link rel="stylesheet" href="plugins/themify/css/themify-icons.css">
+  <!-- Slick Carousel CSS -->
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!--
+    primary: 97658d
+    secondary: 89aae6
+    terciary: dcd6f7
+    fourth: 274060
+    fifth: 335c81
+
+    https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js
+  -->
+
+</head>
+
+
+<body id="top-header">
+
+<!-- LOADER TEMPLATE -->
+<div id="page-loader">
+    <div class="loader-icon fa fa-spin colored-border"></div>
+</div>
+ <!-- /LOADER TEMPLATE -->
+
+
+    <!-- NAVBAR
+    ================================================= -->
+    <nav class="navbar navbar-expand-lg navbar-light trans-navigation fixed-top navbar-togglable">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <!--<h3 style="color: #97658d">Triagix</h3>-->
+                <h5>HCJSM</h5>
+            </a>
+            <!-- Toggler -->
+
+            <!--
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>-->
+
+            <!-- Collapse -->
+
+        </div> <!-- / .container -->
+    </nav>
+
+    
+    <section class="banner-area py-7">
+        <!-- Content -->
+        <div class="container main-container">
+            <div class="row  align-items-center">
+                <div class="col-md-12 col-lg-7 text-center text-lg-left">
+                    <div class="main-banner">
+                        <!-- Heading -->
+                        <h1 class="display-4 mb-4 font-weight-bold">
+                            Waiting room !
+                            <i class="blind icon"></i>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 d-none d-lg-block mx-auto text-center">
+                    <div class="banner-img-block mx-auto">
+                        <img src="./images/triagix/personwithmobile.png" id="main_image" alt="banner-img" class="img-fluid mx-auto">
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+            <hr>
+            <div class="row mx-auto">
+                <div class="card mx-auto w-100">
+                    <div class="card-header">
+                        en espera
+                    </div>
+                    <div class="card-body w-100">
+                        <button class="btn btn-block btn-primary" id="turn_dermato">Dermato</button>
+                    </div>
+                </div>
+           
+            </div>
+        </div> <!-- / .container -->
+    </section>
+
+
+
+     <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <br>
+        <div class="modal-body text-center">
+            <h5 class="text-center pb-4">Ingrese con nombre completo y DNI</h5>
+            <div class="contact_form" action="mail.php">
+                <div class="row mx-auto">
+                    <!-- Input -->
+                    <div class="col-sm-6 mb-6 mx-auto">
+                        <div class="form-group">
+                            <div class="input-group ">
+                                <input class="form-control modern_input"id="email"placeholder="email@email.com" type="email">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Input -->
+
+                    <div class="w-100"></div>
+
+                    <!-- Input -->
+                    <div class="col-sm-6 mb-6 mx-auto">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control modern_input" id="empresa" placeholder="DNI" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Input -->
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="enviar" disabled>Adelante!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+    <!--  Page Scroll to Top  -->
+
+    <a class="scroll-to-top js-scroll-trigger" href="#top-header">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+
+   
+
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="plugins/bootstrap/js/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+
+    <!-- Map Js -->
+    <script src="plugins/google-map/gmap3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwIQh7LGryQdDDi-A603lR8NqiF3R_ycA"></script>
+
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+  </html>
+   
