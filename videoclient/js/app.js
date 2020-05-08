@@ -15,6 +15,7 @@ function createSession(){
             let data = res;
             apiKey = data.apiKey;
             sessionId = data.sessionId;
+            token = data.token;
             console.log("Session created! ", sessionId);
             // (optional) add server code here
             initializeSession();
