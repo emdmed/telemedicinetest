@@ -39,10 +39,8 @@ app.get("/createsession", function(req, res){
     opentok.createSession(function(err, session) {
         if (err) return console.log(err);
         let token = session.generateToken()
-        console.log("new session created ", session.sessionId);
 
         sessionInfo = session.sessionId;
-        console.log("doctor session ", sessionInfo);
 
         res.json({
             apiKey,
@@ -67,7 +65,13 @@ app.post("/contact", async function(req, res){
     if(storeUser === false){
         res.status(400).end();
     } else {
-        res.send({url: `${testurl}/waitingroom.html`, storeUser}).status(200).end();
+        console.log(storeUser[0]);
+        console.log("stored user ", storeUser[0].type, storeUser[0].service );
+        if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
+            res.send({url: `${testurl}/dermato.html`, storeUser}).status(200).end();
+        } else {
+            res.send({url: `${testurl}/waitingroom.html`, storeUser}).status(200).end();
+        }
     }
 
 })

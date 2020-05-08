@@ -14,17 +14,12 @@ const db_handler = {
 
 
 async function createPatient(patient, callback){
-
     let created_patient = await PatientModel.create(patient);
     return created_patient;
-
-
 }
 
 async function findPatient(patient){
-    console.log("patient ", patient);
     let found = await PatientModel.find({email: patient.email, dni: parseInt(patient.dni)});
-    console.log(found);
     if(found.length === 0){
         return false
     } else {

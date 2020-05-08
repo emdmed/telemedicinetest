@@ -42,6 +42,21 @@ $("body").on("click", "#paciente_dermato", function(){
     })
 })
 
+function initPatientConsultorio(){
+  $.ajax({
+    url: "/createtoken",
+    method: "GET",
+    success: function(res){
+        let data = res;
+        apiKey = data.apiKey;
+        sessionId = data.sessionId;
+        token = data.token;
+
+        initializeSession();
+    }
+})
+}
+
 
 
 
