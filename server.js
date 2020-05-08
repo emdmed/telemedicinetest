@@ -30,7 +30,7 @@ app.get("/", function(req, res){
 app.get("/createsession", function(req, res){
     opentok.createSession(function(err, session) {
         if (err) return console.log(err);
-        let token = opentok.generateToken();
+        let token = session.generateToken()
         console.log("new session created ", session.sessionId);
 
         sessionInfo = session.sessionId;
