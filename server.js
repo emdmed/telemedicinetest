@@ -38,7 +38,7 @@ app.get("/createsession", function(req, res){
         res.json({
             apiKey,
             sessionId: session.sessionId,
-            token;
+            token
         }).end();
     });
 })
