@@ -8,7 +8,7 @@ var OpenTok = require('opentok'),
 
 const server = require("http").createServer(app);
 
-const sessionInfo;
+let sessionInfo;
 
 let token;
 
