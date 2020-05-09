@@ -125,3 +125,4 @@ function handleError(error) {
     globalSession.disconnect()
 
   })
+
