@@ -124,6 +124,7 @@ function handleError(error) {
         success: function(res){
           console.log("turno borrado");
           alert("Finalizó la consulta");
+
         }
       })
 
@@ -135,6 +136,16 @@ function handleError(error) {
 $("body").on("click", "#end_call", function(session){
 
   globalSession.disconnect()
+
+  //tell server to delete sessionEndocrino on memory
+
+  $.ajax({
+    url: "/deleteEndocrinoSession",
+    method: "GET",
+    success: function(res){
+      console.log(res);
+    }
+  })
 
 })
 

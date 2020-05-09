@@ -214,3 +214,21 @@ app.get("/checkEndocrinoSession", function(req, res){
 
 })
 
+//client tells server to delete sessions
+
+app.get("/deleteEndocrinoSession", function(req, res){
+
+    sessionEndocrino = undefined;
+    res.status(200).end();
+
+})
+
+app.get("/deleteDermatoSession", function(req, res){
+
+    sessionDermato = undefined;
+    res.status(200).end();
+
+})
+
+
+
