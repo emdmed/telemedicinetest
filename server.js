@@ -79,6 +79,7 @@ app.get("/createtoken", function(req, res){
     res.json({sessionId: sessionDermato, token, apiKey}).end();
 })
 
+//login
 app.post("/contact", async function(req, res){
     console.log("contact");
     let data = req.body;
@@ -92,6 +93,8 @@ app.post("/contact", async function(req, res){
         console.log("stored user ", storeUser[0].type, storeUser[0].service );
         if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
             res.send({url: `${url}/dermato.html`, storeUser}).status(200).end();
+        } else if(storeUser[0].type === "doctor" && storeUser[0].service === "endocrino"){
+            res.send({url: `${url}/endocrino.html`, storeUser}).status(200).end();
         } else {
             res.send({url: `${url}/waitingroom.html`, storeUser}).status(200).end();
         }
