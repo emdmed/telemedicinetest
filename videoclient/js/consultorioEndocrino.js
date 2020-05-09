@@ -56,7 +56,7 @@ function initPatientConsultorio(){
         sessionId = data.sessionId;
         token = data.token;
 
-        initializeSession();
+        initializeSession(apiKey);
     },
     error: function(){
         alert("El consultorio no se encuentra disponible");
