@@ -84,12 +84,14 @@ app.get("/createtokenendocrino", function(req, res){
     try{
         console.log("endocrino session", sessionEndocrino);
         token = opentok.generateToken(sessionEndocrino);
+        console.log("patient video ", "token ",token, "session ", sessionEndocrino);
+        res.json({sessionId: sessionEndocrino, token, apiKey}).end();
     }catch{
+        console.log("patient video ", "token ",token, "session ", sessionEndocrino);
         res.send(400).end();
     }
 
-    console.log("patient video ", "token ",token, "session ", sessionEndocrino);
-    res.json({sessionId: sessionEndocrino, token, apiKey}).end();
+
 
 })
 
