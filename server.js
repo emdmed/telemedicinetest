@@ -82,12 +82,13 @@ app.get("/createtokendermato", function(req, res){
 app.get("/createtokenendocrino", function(req, res){
     let token;
     try{
+        console.log("endocrino session", sessionEndocrino);
         token = opentok.generateToken(sessionEndocrino);
     }catch{
         res.send(400).end();
     }
 
-    console.log("patient video ", "token ",token, "session ", sessionDermato);
+    console.log("patient video ", "token ",token, "session ", sessionEndocrino);
     res.json({sessionId: sessionDermato, token, apiKey}).end();
 })
 

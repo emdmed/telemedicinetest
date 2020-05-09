@@ -52,7 +52,7 @@ function initPatientConsultorio(){
     method: "GET",
     success: function(res){
         let data = res;
-        console.log("apikey ", data.apiKey);
+        console.log("apikey ", data.apiKey, "token ", data.token);
         apiKey = data.apiKey;
         sessionId = data.sessionId;
         token = data.token;
