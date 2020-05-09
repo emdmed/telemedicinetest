@@ -99,9 +99,9 @@ function handleError(error) {
       }
     });
 
-    $("body").on("click", "#end_call", function(){
+    $("body").on("click", "#end_call", function(session){
 
-      Session.disconnect()
+      session.disconnect()
   
     })
   }
