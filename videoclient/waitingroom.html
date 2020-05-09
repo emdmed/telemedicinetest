@@ -98,7 +98,7 @@
             </button>-->
 
             <!-- Collapse -->
-
+            <button class="btn btn-outline-primary" id="delete_localstorage">Volver a sacar turno</button>
         </div> <!-- / .container -->
     </nav>
 
@@ -107,14 +107,17 @@
         <!-- Content -->
         <div class="container main-container">
             <div class="row  align-items-center">
-                <div class="col-md-12 col-lg-7 text-center text-lg-left">
-                    <div class="main-banner">
+                <div class="col-md-12 col-lg-7 text-center text-lg-left mx-auto">
+                    <div class="main-banner mx-auto">
                         <!-- Heading -->
                         <h1 class="display-4 mb-4 font-weight-bold">
                             Sala de espera
-                            <i class="blind icon"></i>
                         </h1>
-                        <button class="btn btn-outline-primary" id="delete_localstorage">Volver a sacar turno</button>
+                        <div class="form-row waitingroom_wait_formrow">
+                            <p class="ml-4 waitinroom_status_message" >Buscando disponibilidad de médicos, aguarte un momento...</p>
+                        </div>
+                
+                     
                     </div>
                 </div>
 
@@ -131,17 +134,17 @@
                     <div class="card-header bg-white">
                         <div class="form-row">
                             <h3>Dermatología</h3>
-                            <img src="./images/wait.png.png" height="30px" id="wait_in_line_icon" class="m-0 mx-auto" style="display: none;">
+                            <img src="./images/wait.png" height="30px" id="wait_in_line_icon" class="m-0 mx-auto" style="display: none;">
                         </div>
                    
                         <p id="dermato_turn_number"></p>
+                        <p id="dermato_doctor_status">¿Médico disponible?</p>
                     </div>
                     <div class="card-body w-100 tex-center">
              
-                       
-           
                         <a href="pacienteDermato.html" class="btn btn-block btn-primary" id="turn_dermato" style="display: none;">Ingresar</a>
                         <button class="btn btn-secondary btn-block" id="go_to_dermato_waiting_line">Sacar turno</button>
+
                     </div>
                 </div>
 
@@ -149,17 +152,17 @@
                     <div class="card-header bg-white">
                         <div class="form-row">
                             <h3>Endocrinología</h3>
-                            <img src="./images/wait.png.png" height="30px" id="wait_in_line_icon" class="m-0 mx-auto" style="display: none;">
+                            <img src="./images/wait.png" height="30px" id="wait_in_line_icon" class="m-0 mx-auto" style="display: none;">
                         </div>
                    
                         <p id="endocrino_turn_number"></p>
+                        <p id="endocrino_doctor_status">¿Médico disponible?</p>
                     </div>
-                    <div class="card-body w-100 tex-center">
-             
-                       
+                    <div class="card-body w-100 tex-center">             
            
                         <a href="pacienteEndocrino.html" class="btn btn-block btn-primary" id="turn_endocrino" style="display: none;">Ingresar</a>
                         <button class="btn btn-secondary btn-block" id="go_to_endocrino_waiting_line">Sacar turno</button>
+
                     </div>
                 </div>
            

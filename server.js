@@ -202,15 +202,9 @@ app.post("/deleteMyEndocrinoTurn", async function(req, res){
 
 //check if sessions are online
 
-app.get("/checkEndocrinoSession", function(req, res){
+app.get("/checkAllSessionOnline", function(req, res){
 
-    console.log(sessionEndocrino);
-
-    if(!sessionEndocrino || sessionEndocrino === null || sessionEndocrino === undefined){
-        res.status(400).end();
-    } else {
-        res.status(200).end();
-    }
+    res.send({dermato: sessionDermato, endocrino: sessionEndocrino});
 
 })
 

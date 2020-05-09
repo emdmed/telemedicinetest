@@ -190,22 +190,33 @@ $("body").on("click", "#delete_localstorage", function(){
 })
 
 
-function checkIfEndocrinoSessionIsOnline(){
+function checkAllSessionOnline(){
     $.ajax({
-      url: "/checkEndocrinoSession",
+      url: "/checkAllSessionOnline",
       method: "GET",
       success: function(res){
-        console.log("Session is online")
+        let sessions = res;
+        console.log(sessions);
+        if(sessions.endocrino !== undefined){
+            $("#endocrino_doctor_status").text("Médico atendiendo, por favor espere");
+        } else {$("#endocrino_doctor_status").text("Médico no disponible, por favor espere");}
+
+        if(sessions.dermato !== undefined){
+            $("#dermato_doctor_status").text("Médico atendiendo, por favor espere");
+        } else {$("#dermato_doctor_status").text("Médico no disponible, por favor espere");}
+        
+        $(".waitinroom_status_message").text("A continuación podrá ver los médicos disponibles.");
+
       },
       error: function(){
-        console.log("Session is not online")
+        console.log("Error buscando sessions");
       }
     })
 }
 
 
 setInterval(() => {
-    checkIfEndocrinoSessionIsOnline();
+    checkAllSessionOnline();
 }, 7000);
   
 

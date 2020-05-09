@@ -2173,14 +2173,7 @@ CONTACT PAGE
 
 }
 
-@keyframes spin {
-  from {
-      transform:rotate(0deg);
-  }
-  to {
-      transform:rotate(360deg);
-  }
-}
+
 
 .card{
   border: none;
@@ -2188,4 +2181,25 @@ CONTACT PAGE
 
 body{
   background-color: #f0f0f0 !important;
+}
+
+.waitingroom_wait_loader{
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
