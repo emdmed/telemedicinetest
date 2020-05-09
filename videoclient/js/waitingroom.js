@@ -74,7 +74,7 @@ $("body").on("click", "#go_to_waiting_line", function(){
 
 $("body").on("click", "#delete_localstorage", function(){
 
-    localStorage.clear();
+    localStorage.removeItem("turno");
 
 })
 
