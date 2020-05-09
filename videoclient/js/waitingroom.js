@@ -9,7 +9,7 @@ if (!STORED_PATIENT){
 
     if(!turno){
 
-    } else {
+    } else if (turno.consultorio === "dermato") {
 
         console.log("Turno ya solicitado, esperando...")
         $("#go_to_waiting_line").hide();
@@ -39,6 +39,35 @@ if (!STORED_PATIENT){
             })
     
         }, 5000);
+    } else if (turno.consultorio === "endocrino"){
+        console.log("Turno ya solicitado, esperando...")
+        $("#go_to_waiting_line").hide();
+        $("#wait_in_line_icon").show();
+
+        let checkturn = setInterval(() => {
+            //check first if there is a registered patient on db
+            $.ajax({
+                url: "/checkConsultorioEndocrino",
+                method: "POST",
+                data: STORED_PATIENT[0],
+                success: function(res){
+                    let data = res;
+
+                    if(data.index === 0){
+                        $("#turn_endocrino").show();
+                        clearInterval(checkturn);
+                        $("#wait_in_line_icon").hide();
+                    }
+
+                    console.log("mi turno es el ", data.index);
+                    $("#endocrino_turn_number").text(data.index + " pacientes antes que usted");
+                },
+                error: function(){
+                   
+                }
+            })
+    
+        }, 5000);
     }
 
 }
@@ -60,7 +89,7 @@ $("body").on("click", "#go_to_dermato_waiting_line", function(){
                 alert("Error, el paciente ya se encuentra en la lista de espera (Borrar paciente de db)");
             } else {
                 $("#go_to_waiting_line").hide();
-                localStorage.setItem("turno", true);
+                localStorage.setItem("turno", JSON.stringify({consultorio: "endndocrino", status: true}));
     
                 $("#wait_in_line_icon").show();
                 $("#go_to_waiting_line").hide();
@@ -120,7 +149,7 @@ $("body").on("click", "#go_to_endocrino_waiting_line", function(){
                 alert("Error, el paciente ya se encuentra en la lista de espera (Borrar paciente de db)");
             } else {
                 $("#go_to_endocrino_waiting_line").hide();
-                localStorage.setItem("turno", true);
+                localStorage.setItem("turno", JSON.stringify({consultorio: "endndocrino", status: true}));
     
                 $("#wait_in_line_icon").show();
                 $("#go_to_endocrino_waiting_line").hide();
