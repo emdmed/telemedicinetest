@@ -52,8 +52,9 @@ app.get("/createsession", function(req, res){
 })
 
 app.get("/createtoken", function(req, res){
+    let token;
     try{
-        let token = opentok.generateToken(sessionInfo);
+        token = opentok.generateToken(sessionInfo);
     }catch{
         res.send(400).end();
     }
