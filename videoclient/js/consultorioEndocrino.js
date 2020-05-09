@@ -3,6 +3,12 @@
 //var sessionId = "1_MX40NjcyNzYyMn5-MTU4ODk2Njg5NDY2MH5YaHRHSEF3bmVCZ2lObWJQWUZRVFcrdHZ-fg";
 //var token = "T1==cGFydG5lcl9pZD00NjcyNzYyMiZzaWc9MDkzNWJmMWU0ODdlYTZhMzBmZDM3YTI4NzhlYzFkNDI2MjkwZGRiMDpzZXNzaW9uX2lkPTFfTVg0ME5qY3lOell5TW41LU1UVTRPRGsyTmpnNU5EWTJNSDVZYUhSSFNFRjNibVZDWjJsT2JXSlFXVVpSVkZjcmRIWi1mZyZjcmVhdGVfdGltZT0xNTg4OTY2OTIyJm5vbmNlPTAuNjcwODg3MDE1ODE3NDMyNyZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNTg4OTcwNTE2JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9";
 
+let STORED_PATIENT = JSON.parse(localStorage.getItem("HCJSM_user"));
+
+if (!STORED_PATIENT){
+    alert("Error al validar paciente, por favor vuelva a ingresar");
+} else {}
+
 var apiKey;
 var sessionId;
 var token;
@@ -109,6 +115,17 @@ function handleError(error) {
     session.on("streamDestroyed", function(event) {
       alert("Finalizó la consulta");
       window.location("https://telemedclinicas.herokuapp.com");
+
+      $.ajax({
+        url: "/deleteMyEndocrinoTurn",
+        method: "POST",
+        data: STORED_PATIENT[0],
+        success: function(res){
+          console.log("turno borrado");
+      
+        }
+      })
+
     });
 
   

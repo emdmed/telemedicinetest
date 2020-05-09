@@ -175,6 +175,16 @@ $("body").on("click", "#delete_localstorage", function(){
         }
     })
 
+    $.ajax({
+        url: "/deleteMyEndocrinoTurn",
+        method: "POST",
+        data: STORED_PATIENT[0],
+        success: function(res){
+            console.log(res);
+            localStorage.removeItem("turno");
+            window.location.reload();
+        }
+    })
  
 
 })

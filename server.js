@@ -91,7 +91,6 @@ app.get("/createtokenendocrino", function(req, res){
     console.log("patient video ", "token ",token, "session ", sessionEndocrino);
     res.json({sessionId: sessionEndocrino, token, apiKey}).end();
 
-    //ERROR EL CONSULTORIO NO SE ENCUENTRA DISPONIBLE
 })
 
 //login
