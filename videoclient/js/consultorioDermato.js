@@ -98,10 +98,12 @@ function handleError(error) {
         session.publish(publisher, handleError);
       }
     });
+
+    $("body").on("click", "#end_call", function(){
+
+      Session.disconnect()
+  
+    })
   }
 
-  $("body").on("click", "#end_call", function(){
-
-    OT.disconnect();
-
-  })
+ 
