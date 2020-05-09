@@ -111,7 +111,7 @@
                     <div class="main-banner">
                         <!-- Heading -->
                         <h1 class="display-4 mb-4 font-weight-bold">
-                            Waiting room !
+                            Sala de espera
                             <i class="blind icon"></i>
                         </h1>
                     </div>
@@ -127,10 +127,12 @@
             <div class="row mx-auto">
                 <div class="card mx-auto w-100">
                     <div class="card-header">
-                        en espera
+                        <h3>Dermatología</h3>
+                        <p id="dermato_turn_number"></p>
                     </div>
                     <div class="card-body w-100">
-                        <a href="pacienteDermato.html" class="btn btn-block btn-primary" id="turn_dermato">Dermato</a>
+                        <a href="pacienteDermato.html" class="btn btn-block btn-primary" id="turn_dermato" style="display: none;">Ingresar</a>
+                        <button class="btn btn-secondary btn-block" id="go_to_waiting_line">Sacar turno</button>
                     </div>
                 </div>
            
@@ -213,6 +215,7 @@
 
     <script src="js/theme.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/waitingroom.js"></script>
 
   </body>
   </html>

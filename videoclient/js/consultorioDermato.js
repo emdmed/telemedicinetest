@@ -53,6 +53,10 @@ function initPatientConsultorio(){
         token = data.token;
 
         initializeSession();
+    },
+    error: function(){
+        alert("El consultorio no se encuentra disponible");
+        window.location= "https://telemedclinicas.herokuapp.com";
     }
 })
 }
@@ -95,3 +99,9 @@ function handleError(error) {
       }
     });
   }
+
+  $("body").on("click", "#end_call", function(){
+
+    OT.disconnect();
+
+  })

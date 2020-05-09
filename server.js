@@ -26,7 +26,7 @@ app.use(express.static(__dirname + "/videoclient"));
 server.listen(process.env.PORT || 3000);
 console.log("Server running...")
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 //ROUTES
@@ -52,7 +52,12 @@ app.get("/createsession", function(req, res){
 })
 
 app.get("/createtoken", function(req, res){
-    let token = opentok.generateToken(sessionInfo);
+    try{
+        let token = opentok.generateToken(sessionInfo);
+    }catch{
+        res.send(400).end();
+    }
+
     console.log("patient video ", "token ",token, "session ", sessionInfo);
     res.json({sessionId: sessionInfo, token, apiKey}).end();
 })
@@ -69,13 +74,31 @@ app.post("/contact", async function(req, res){
         console.log(storeUser[0]);
         console.log("stored user ", storeUser[0].type, storeUser[0].service );
         if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
-            res.send({url: `${url}/dermato.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/dermato.html`, storeUser}).status(200).end();
         } else {
-            res.send({url: `${url}/waitingroom.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/waitingroom.html`, storeUser}).status(200).end();
         }
     }
 
 })
 
+
+//checkear consultorios
+
+app.post("/checkConsultorioDermato", async function(req, res){
+
+    let data = req.body;
+    console.log(data);
+    let found = await db_handler.checkConsultorioDermato(data);
+    console.log("found patient", found);
+    res.send(found).end();
+
+})
+
+app.post("/dermatoWaitingLine", async function(req, res){
+    let data = req.body;
+    await db_handler.enterDermatoWaitingLine(data);
+    res.status(200).end();
+})
 
 
