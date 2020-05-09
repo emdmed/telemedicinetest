@@ -102,6 +102,11 @@ function handleError(error) {
       }
     });
 
+    session.on("sessionDisconnected", function(event) {
+      alert("Finalizó la consulta");
+      window.location("https://telemedclinicas.herokuapp.com");
+    });
+
   
   }
 

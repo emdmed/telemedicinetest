@@ -10,14 +10,24 @@ if (!STORED_PATIENT){
     if(!turno){
 
     } else {
-        setInterval(() => {
+        let checkturn = setInterval(() => {
             //check first if there is a registered patient on db
             $.ajax({
                 url: "/checkConsultorioDermato",
                 method: "POST",
                 data: STORED_PATIENT[0],
                 success: function(res){
-                    console.log(res);
+                    let data = res;
+
+                    if(data.index === 0){
+                        $("#turn_dermato").show();
+                        clearInterval(checkturn);
+                    }
+
+                    $("go_to_waiting_line").hide();
+
+                    console.log("mi turno es el ", data.index);
+                    $("#dermato_turn_number").text(data.index + " pacientes antes que usted");
                 },
                 error: function(){
                    
@@ -40,7 +50,7 @@ $("body").on("click", "#go_to_waiting_line", function(){
             $("#go_to_waiting_line").hide();
             localStorage.setItem("turno", true);
 
-            setInterval(() => {
+            let checkturn = setInterval(() => {
                 //check order in line
                 $.ajax({
                     url: "/checkConsultorioDermato",
@@ -51,6 +61,7 @@ $("body").on("click", "#go_to_waiting_line", function(){
 
                         if(data.index === 0){
                             $("#turn_dermato").show();
+                            clearInterval(checkturn);
                         }
 
                         $("go_to_waiting_line").hide();
