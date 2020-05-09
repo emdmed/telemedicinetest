@@ -31,7 +31,7 @@ $("body").on("click", "#init_dermato_room", function(){
 
 $("body").on("click", "#paciente_dermato", function(){
     $.ajax({
-        url: "/createtoken",
+        url: "/createtokendermato",
         method: "GET",
         success: function(res){
             let data = res;
@@ -46,7 +46,7 @@ $("body").on("click", "#paciente_dermato", function(){
 
 function initPatientConsultorio(){
   $.ajax({
-    url: "/createtoken",
+    url: "/createtokendermato",
     method: "GET",
     success: function(res){
         let data = res;

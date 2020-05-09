@@ -21,7 +21,7 @@ function createSession(){
             token = data.token;
             console.log("Session created! ", sessionId);
             // (optional) add server code here
-            initializeSession(apiKey);
+            initializeSession();
         }
     })
 }
@@ -41,7 +41,7 @@ $("body").on("click", "#paciente_endocrino", function(){
             sessionId = data.sessionId;
             token = data.token;
 
-            initializeSession(apiKey);
+            initializeSession();
         }
     })
 })
@@ -55,9 +55,10 @@ function initPatientConsultorio(){
         console.log("apikey ", data.apiKey, "token ", data.token);
         apiKey = data.apiKey;
         sessionId = data.sessionId;
+        globalSession = data.sessionId;
         token = data.token;
 
-        initializeSession(apiKey);
+        initializeSession();
     },
     error: function(){
         alert("El consultorio no se encuentra disponible");
