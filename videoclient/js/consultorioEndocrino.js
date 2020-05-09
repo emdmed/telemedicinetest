@@ -55,7 +55,6 @@ function initPatientConsultorio(){
         console.log("apikey ", data.apiKey, "token ", data.token);
         apiKey = data.apiKey;
         sessionId = data.sessionId;
-        globalSession = data.sessionId;
         token = data.token;
 
         initializeSession();
@@ -77,7 +76,7 @@ function handleError(error) {
     }
   }
   
-  function initializeSession(apiKey) {
+  function initializeSession() {
     var session = OT.initSession(apiKey, sessionId);
     globalSession = session;
   
