@@ -190,3 +190,35 @@ $("body").on("click", "#delete_localstorage", function(){
 })
 
 
+function checkIfEndocrinoSessionIsOnline(){
+    let checker = $.ajax({
+      url: "/checkEndocrinoSession",
+      method: "GET",
+      success: function(res){
+        console.log(res);
+        return true
+      },
+      error: function(){
+        alert("Error at checking if session is online")
+        return false
+      }
+    })
+
+    return checker;
+  }
+
+
+setInterval(() => {
+let check = checkIfEndocrinoSessionIsOnline();
+
+    if(check === true){
+        console.log("Endocrino session is online");
+    } else if(check === false){
+        console.log("Endocrino session is offline, do not try to connect")
+    } else {
+        console.log("ERROR, dunno");
+    }
+    
+}, 7000);
+  
+

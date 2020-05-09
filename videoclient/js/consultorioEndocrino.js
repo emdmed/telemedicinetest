@@ -17,17 +17,6 @@ let globalSession;
 
 //check if session is created (notify petient when a doctor is going to be online)
 
-setInterval(() => {
-  let check = checkIfEndocrinoSessionIsOnline();
-
-  if(check === true){
-    console.log("Endocrino session is online");
-  } else if(check === false){
-    console.log("Endocrino session is offline, do not try to connect")
-  } else {
-    console.log("ERROR, dunno");
-  }
-}, 7000);
 
 function createSession(){
     $.ajax({
@@ -94,7 +83,7 @@ function handleError(error) {
     if (error) {
       alert(error.message);
     }
-  }
+}
   
   function initializeSession() {
     var session = OT.initSession(apiKey, sessionId);
@@ -143,26 +132,10 @@ function handleError(error) {
   
   }
 
-  $("body").on("click", "#end_call", function(session){
+$("body").on("click", "#end_call", function(session){
 
-    globalSession.disconnect()
+  globalSession.disconnect()
 
-  })
+})
 
 
-  function checkIfEndocrinoSessionIsOnline(){
-    let checker = $.ajax({
-      url: "/checkEndocrinoSession",
-      method: "GET",
-      success: function(res){
-        console.log(res);
-        return true
-      },
-      error: function(){
-        alert("Error at checking if session is online")
-        return false
-      }
-    })
-
-    return checker;
-  }
