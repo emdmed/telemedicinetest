@@ -15,6 +15,7 @@ function createSession(){
         method: "GET",
         success: function(res){
             let data = res;
+            console.log("APIKEY ", data.apiKey);
             apiKey = data.apiKey;
             sessionId = data.sessionId;
             token = data.token;
