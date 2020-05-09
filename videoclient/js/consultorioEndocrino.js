@@ -36,6 +36,7 @@ $("body").on("click", "#paciente_endocrino", function(){
         method: "GET",
         success: function(res){
             let data = res;
+            console.log("TOKEN ", data);
             apiKey = data.apiKey;
             sessionId = data.sessionId;
             token = data.token;
