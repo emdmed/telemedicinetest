@@ -108,11 +108,11 @@ app.post("/contact", async function(req, res){
         console.log(storeUser[0]);
         console.log("stored user ", storeUser[0].type, storeUser[0].service );
         if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
-            res.send({url: `${url}/dermato.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/dermato.html`, storeUser}).status(200).end();
         } else if(storeUser[0].type === "doctor" && storeUser[0].service === "endocrino"){
-            res.send({url: `${url}/endocrino.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/endocrino.html`, storeUser}).status(200).end();
         } else {
-            res.send({url: `${url}/waitingroom.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/waitingroom.html`, storeUser}).status(200).end();
         }
     }
 
@@ -197,5 +197,20 @@ app.post("/deleteMyEndocrinoTurn", async function(req, res){
     }catch(error){
         res.status(400).end();
     }
+})
+
+
+//check if sessions are online
+
+app.get("/checkEndocrinoSession", function(req, res){
+
+    console.log(sessionEndocrino);
+
+    if(!sessionEndocrino || sessionEndocrino === null || sessionEndocrino === undefined){
+        res.status(400).end();
+    } else {
+        res.status(200).end();
+    }
+
 })
 
