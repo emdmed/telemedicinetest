@@ -119,16 +119,16 @@ $("body").on("click", "#go_to_endocrino_waiting_line", function(){
             if(getinline.denied === true){
                 alert("Error, el paciente ya se encuentra en la lista de espera (Borrar paciente de db)");
             } else {
-                $("#go_to_waiting_line").hide();
+                $("#go_to_endocrino_waiting_line").hide();
                 localStorage.setItem("turno", true);
     
                 $("#wait_in_line_icon").show();
-                $("#go_to_waiting_line").hide();
+                $("#go_to_endocrino_waiting_line").hide();
     
                 let checkturn = setInterval(() => {
                     //check order in line
                     $.ajax({
-                        url: "/checkConsultorioDermato",
+                        url: "/checkConsultorioEndocrino",
                         method: "POST",
                         data: STORED_PATIENT[0],
                         success: function(res){
@@ -137,15 +137,12 @@ $("body").on("click", "#go_to_endocrino_waiting_line", function(){
                             console.log(data);
     
                             if(data.index === 0){
-                                $("#turn_dermato").show();
+                                $("#turn_endocrino").show();
                                 clearInterval(checkturn);
                                 $("#wait_in_line_icon").hide();
                             }
     
-                       
-    
-                            console.log("mi turno es el ", data.index);
-                            $("#dermato_turn_number").text(data.index + " pacientes antes que usted");
+                            $("#endocrino_turn_number").text(data.index + " pacientes antes que usted");
                         },
                         error: function(){
                            alert("Error al ingresar al consultorio")
