@@ -3,11 +3,11 @@
 paciente: enrique.darderes@gmail.com 32609598
 medico: dermato@hcjsm.com 1111
 
-[] - consultorio dermato
-    [] - dejar que el medico finalice la llamada
-        [] - eliminar paciente de waitinglist del consultorio **testear esto
+[x] - consultorios
+    [x] - dejar que el medico finalice la llamada
+        [x] - eliminar paciente de waitinglist del consultorio **testear esto
 
 
-[] - mandar alert y redireccionar cuando el medico finaliza la consulta
-[] - al sacar turno eliminar los otros servicios del DOM
+[x] - mandar alert y borrar turno
+[x] - al sacar turno eliminar los otros servicios del DOM
 [] - handle cuando turno es true en localstorage, sacar los turnos de los servicios nos correspondientes del DOM
