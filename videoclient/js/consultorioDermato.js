@@ -7,6 +7,8 @@ var apiKey;
 var sessionId;
 var token;
 
+let globalSession;
+
 function createSession(){
     $.ajax({
         url: "/createsession",
@@ -73,6 +75,7 @@ function handleError(error) {
   
   function initializeSession() {
     var session = OT.initSession(apiKey, sessionId);
+    globalSession = session;
   
     // Subscribe to a newly created stream
     session.on('streamCreated', function(event) {
@@ -99,11 +102,11 @@ function handleError(error) {
       }
     });
 
-    $("body").on("click", "#end_call", function(session){
-
-      session.disconnect()
   
-    })
   }
 
- 
+  $("body").on("click", "#end_call", function(session){
+
+    globalSession.disconnect()
+
+  })
