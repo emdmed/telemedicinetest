@@ -89,7 +89,7 @@ app.get("/createtokenendocrino", function(req, res){
     }
 
     console.log("patient video ", "token ",token, "session ", sessionEndocrino);
-    res.json({sessionId: sessionDermato, token, apiKey}).end();
+    res.json({sessionId: sessionEndocrino, token, apiKey}).end();
 })
 
 //login
