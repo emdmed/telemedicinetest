@@ -78,6 +78,7 @@ function handleError(error) {
   
   function initializeSession() {
     var session = OT.initSession(apiKey, sessionId);
+    console.log("initsession ", "apikey", apiKey,  "sessionid", sessionId, "token ", token)
     globalSession = session;
   
     // Subscribe to a newly created stream
