@@ -2134,6 +2134,20 @@ CONTACT PAGE
   border-radius: 10px;
   z-index: 100;
 }
+
+#init_endocrino_room{
+  position: relative;
+  top: 10px;
+  left:5px;
+  background-color: #7c3131;
+  color: white;
+  border-style: solid;
+  border-color: #7c3131;
+  padding: 9px;
+  border-radius: 10px;
+  z-index: 100;
+}
+
 #end_call{
   position: relative;
   top: 10px;

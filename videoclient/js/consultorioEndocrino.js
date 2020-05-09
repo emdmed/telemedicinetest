@@ -21,7 +21,7 @@ function createSession(){
             token = data.token;
             console.log("Session created! ", sessionId);
             // (optional) add server code here
-            initializeSession();
+            initializeSession(apiKey);
         }
     })
 }
@@ -40,7 +40,7 @@ $("body").on("click", "#paciente_endocrino", function(){
             sessionId = data.sessionId;
             token = data.token;
 
-            initializeSession();
+            initializeSession(apiKey);
         }
     })
 })
@@ -75,7 +75,7 @@ function handleError(error) {
     }
   }
   
-  function initializeSession() {
+  function initializeSession(apiKey) {
     var session = OT.initSession(apiKey, sessionId);
     globalSession = session;
   
