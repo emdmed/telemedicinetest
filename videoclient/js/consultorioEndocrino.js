@@ -11,7 +11,7 @@ let globalSession;
 
 function createSession(){
     $.ajax({
-        url: "/createsessionDermato",
+        url: "/createsessionEndocrino",
         method: "GET",
         success: function(res){
             let data = res;
@@ -25,11 +25,11 @@ function createSession(){
     })
 }
 
-$("body").on("click", "#init_dermato_room", function(){
+$("body").on("click", "#init_endocrino_room", function(){
     createSession();
 })
 
-$("body").on("click", "#paciente_dermato", function(){
+$("body").on("click", "#paciente_endocrino", function(){
     $.ajax({
         url: "/createtoken",
         method: "GET",

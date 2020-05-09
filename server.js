@@ -14,12 +14,13 @@ const server = require("http").createServer(app);
 //DB
 const remotemongo = "mongodb://admin:sanatorio123@ds054118.mlab.com:54118/labos";
 //connect to mongoose
-mongoose.connect(remotemongo, {useNewUrlParser: false});
+mongoose.connect(remotemongo, {useNewUrlParser: true, useUnifiedTopology: true });
 
 let testurl = "http://localhost:3000";
 let url = "https://telemedclinicas.herokuapp.com";
 
-let sessionInfo;
+let sessionDermato;
+let sessionEndocrino;
 
 app.use(express.static(__dirname + "/videoclient"));
 
@@ -35,13 +36,28 @@ app.get("/", function(req, res){
     res.sendFile(__dirname + "/videoclient/welcome.html");
 })
 
-//get credentials
-app.get("/createsession", function(req, res){
+//create Sessions
+app.get("/createsessionDermato", function(req, res){
     opentok.createSession(function(err, session) {
         if (err) return console.log(err);
         let token = session.generateToken()
 
-        sessionInfo = session.sessionId;
+        sessionDermato = session.sessionId;
+
+        res.json({
+            apiKey,
+            sessionId: session.sessionId,
+            token
+        }).end();
+    });
+})
+
+app.get("/createsessionEndocrino", function(req, res){
+    opentok.createSession(function(err, session) {
+        if (err) return console.log(err);
+        let token = session.generateToken()
+
+        sessionEndocrino = session.sessionId;
 
         res.json({
             apiKey,
@@ -54,13 +70,13 @@ app.get("/createsession", function(req, res){
 app.get("/createtoken", function(req, res){
     let token;
     try{
-        token = opentok.generateToken(sessionInfo);
+        token = opentok.generateToken(sessionDermato);
     }catch{
         res.send(400).end();
     }
 
-    console.log("patient video ", "token ",token, "session ", sessionInfo);
-    res.json({sessionId: sessionInfo, token, apiKey}).end();
+    console.log("patient video ", "token ",token, "session ", sessionDermato);
+    res.json({sessionId: sessionDermato, token, apiKey}).end();
 })
 
 app.post("/contact", async function(req, res){
@@ -86,6 +102,7 @@ app.post("/contact", async function(req, res){
 
 //checkear consultorios
 
+//DERMATO
 app.post("/checkConsultorioDermato", async function(req, res){
 
     let data = req.body;
@@ -98,8 +115,68 @@ app.post("/checkConsultorioDermato", async function(req, res){
 
 app.post("/dermatoWaitingLine", async function(req, res){
     let data = req.body;
-    await db_handler.enterDermatoWaitingLine(data);
-    res.status(200).end();
+    try{
+        let enterWaitingLine = await db_handler.enterDermatoWaitingLine(data);
+        console.log("enterWaitingLine value ", enterWaitingLine);
+        if(enterWaitingLine.denied === true){
+            res.send(enterWaitingLine);
+        } else {
+            res.status(200).end();
+        }
+      
+    }catch(error){
+        //res.status(400).end();
+    }
+
 })
 
+app.post("/deleteMyDermatoTurn", async function(req, res){
+    let data = req.body;
+    try{
+        await db_handler.deleteMyDermatoTurn(data);
+        console.log("turn deleted");
+        res.status(200).end();
+    }catch(error){
+        res.status(400).end();
+    }
+})
+
+//ENDOCRINO
+app.post("/checkConsultorioEndocrino", async function(req, res){
+
+    let data = req.body;
+    console.log(data);
+    let found = await db_handler.checkConsultorioEndocrino(data);
+    console.log("found patient", found);
+    res.send(found).end();
+
+})
+
+app.post("/endocrinoWaitingLine", async function(req, res){
+    let data = req.body;
+    try{
+        let enterWaitingLine = await db_handler.enterEndocrinoWaitingLine(data);
+        console.log("enterWaitingLine value ", enterWaitingLine);
+        if(enterWaitingLine.denied === true){
+            res.send(enterWaitingLine);
+        } else {
+            res.status(200).end();
+        }
+      
+    }catch(error){
+        //res.status(400).end();
+    }
+
+})
+
+app.post("/deleteMyEndocrinoTurn", async function(req, res){
+    let data = req.body;
+    try{
+        await db_handler.deleteMyEndocrinoTurn(data);
+        console.log("turn deleted");
+        res.status(200).end();
+    }catch(error){
+        res.status(400).end();
+    }
+})
 

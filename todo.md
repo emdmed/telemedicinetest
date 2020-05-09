@@ -5,7 +5,7 @@ medico: dermato@hcjsm.com 1111
 
 [] - consultorio dermato
     [] - dejar que el medico finalice la llamada
-        [] - eliminar paciente de waitinglist del consultorio
+        [] - eliminar paciente de waitinglist del consultorio **testear esto
 
 
 [] - mandar alert y redireccionar cuando el medico finaliza la consulta

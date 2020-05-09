@@ -23,7 +23,7 @@
   
   <meta name="author" content="themefisher.com">
 
-  <title>Triagix - Triage automático</title>
+  <title>HCJSM - Telemedicina</title>
 
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
@@ -114,26 +114,52 @@
                             Sala de espera
                             <i class="blind icon"></i>
                         </h1>
+                        <button class="btn btn-outline-primary" id="delete_localstorage">Volver a sacar turno</button>
                     </div>
                 </div>
 
                 <div class="col-lg-5 d-none d-lg-block mx-auto text-center">
                     <div class="banner-img-block mx-auto">
-                        <img src="./images/triagix/personwithmobile.png" id="main_image" alt="banner-img" class="img-fluid mx-auto">
+              
                     </div>
                 </div>
             </div> <!-- / .row -->
             <hr>
             <div class="row mx-auto">
-                <button id="delete_localstorage">local storage</button>
-                <div class="card mx-auto w-100">
-                    <div class="card-header">
-                        <h3>Dermatología</h3>
+               
+                <div class="card mx-auto w-100 shadow-sm rounded dermato-card">
+                    <div class="card-header bg-white">
+                        <div class="form-row">
+                            <h3>Dermatología</h3>
+                            <img src="./images/wait.png.png" height="30px" id="wait_in_line_icon" class="m-0 mx-auto" style="display: none;">
+                        </div>
+                   
                         <p id="dermato_turn_number"></p>
                     </div>
-                    <div class="card-body w-100">
+                    <div class="card-body w-100 tex-center">
+             
+                       
+           
                         <a href="pacienteDermato.html" class="btn btn-block btn-primary" id="turn_dermato" style="display: none;">Ingresar</a>
-                        <button class="btn btn-secondary btn-block" id="go_to_waiting_line">Sacar turno</button>
+                        <button class="btn btn-secondary btn-block" id="go_to_dermato_waiting_line">Sacar turno</button>
+                    </div>
+                </div>
+
+                <div class="card mx-auto w-100 shadow-sm rounded mt-2 endocrino-card">
+                    <div class="card-header bg-white">
+                        <div class="form-row">
+                            <h3>Endocrinología</h3>
+                            <img src="./images/wait.png.png" height="30px" id="wait_in_line_icon" class="m-0 mx-auto" style="display: none;">
+                        </div>
+                   
+                        <p id="endocrino_turn_number"></p>
+                    </div>
+                    <div class="card-body w-100 tex-center">
+             
+                       
+           
+                        <a href="pacienteEndocrino.html" class="btn btn-block btn-primary" id="turn_endocrino" style="display: none;">Ingresar</a>
+                        <button class="btn btn-secondary btn-block" id="go_to_endocrino_waiting_line">Sacar turno</button>
                     </div>
                 </div>
            

@@ -2146,3 +2146,32 @@ CONTACT PAGE
   border-radius: 10px;
   z-index: 100;
 }
+
+#wait_in_line_icon{
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
+.card{
+  border: none;
+}
+
+body{
+  background-color: #f0f0f0 !important;
+}
