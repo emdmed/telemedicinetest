@@ -113,16 +113,14 @@ function handleError(error) {
     });
 
     session.on("streamDestroyed", function(event) {
-      alert("Finalizó la consulta");
-      window.location("https://telemedclinicas.herokuapp.com");
-
+    
       $.ajax({
         url: "/deleteMyEndocrinoTurn",
         method: "POST",
         data: STORED_PATIENT[0],
         success: function(res){
           console.log("turno borrado");
-      
+          alert("Finalizó la consulta");
         }
       })
 
