@@ -2123,7 +2123,19 @@ CONTACT PAGE
 }
 
 #init_dermato_room{
-  position: absolute;
+  position: relative;
+  top: 10px;
+  left:5px;
+  background-color: #97658d;
+  color: white;
+  border-style: solid;
+  border-color: #97658d;
+  padding: 9px;
+  border-radius: 10px;
+  z-index: 100;
+}
+#end_call{
+  position: relative;
   top: 10px;
   left:5px;
   background-color: #97658d;
