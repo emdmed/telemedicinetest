@@ -67,10 +67,22 @@ app.get("/createsessionEndocrino", function(req, res){
     });
 })
 
-app.get("/createtoken", function(req, res){
+app.get("/createtokendermato", function(req, res){
     let token;
     try{
         token = opentok.generateToken(sessionDermato);
+    }catch{
+        res.send(400).end();
+    }
+
+    console.log("patient video ", "token ",token, "session ", sessionDermato);
+    res.json({sessionId: sessionDermato, token, apiKey}).end();
+})
+
+app.get("/createtokenendocrino", function(req, res){
+    let token;
+    try{
+        token = opentok.generateToken(sessionEndocrino);
     }catch{
         res.send(400).end();
     }

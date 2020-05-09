@@ -31,7 +31,7 @@ $("body").on("click", "#init_endocrino_room", function(){
 
 $("body").on("click", "#paciente_endocrino", function(){
     $.ajax({
-        url: "/createtoken",
+        url: "/createtokenendocrino",
         method: "GET",
         success: function(res){
             let data = res;
@@ -46,7 +46,7 @@ $("body").on("click", "#paciente_endocrino", function(){
 
 function initPatientConsultorio(){
   $.ajax({
-    url: "/createtoken",
+    url: "/createtokenendocrino",
     method: "GET",
     success: function(res){
         let data = res;
