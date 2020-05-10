@@ -57,7 +57,7 @@ $("body").on("click", "#paciente_clinica", function(){
     })
 })
 
-function initPatientConsultorio(){
+async function initPatientConsultorio(){
 
   let status = await checkLoggedInPatient();
 

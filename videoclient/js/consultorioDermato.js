@@ -53,7 +53,7 @@ $("body").on("click", "#paciente_dermato", function(){
     })
 })
 
-function initPatientConsultorio(){
+async function initPatientConsultorio(){
 
   let status = await checkLoggedInPatient();
 
