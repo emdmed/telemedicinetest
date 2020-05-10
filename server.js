@@ -87,10 +87,9 @@ app.get("/createtokendermato", function(req, res){
     let token;
     try{
         token = opentok.generateToken(sessionDermato);
+        res.json({sessionId: sessionDermato, token, apiKey}).end();
     }catch{
         res.send(400).end();
-        console.log("patient video ", "token ",token, "session ", sessionDermato);
-        res.json({sessionId: sessionDermato, token, apiKey}).end();
     }
 })
 
