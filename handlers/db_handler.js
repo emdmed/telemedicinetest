@@ -15,13 +15,18 @@ const db_handler = {
     checkConsultorioDermato,
     enterDermatoWaitingLine,
     deleteMyDermatoTurn,
+    getDermatoPatientList,
+    deleteDermatoTurnByDni,
     checkConsultorioEndocrino,
     enterEndocrinoWaitingLine,
     deleteMyEndocrinoTurn,
+    getEndocrinoPatientList,
+    deleteEndocrinoTurnByDni,
     checkConsultorioClinica,
     enterClinicaWaitingLine,
     deleteMyClinicaTurn,
     getClinicaPatientList,
+    deleteClinicaTurnByDni,
     login: loginModule
 }
 
@@ -80,7 +85,17 @@ async function checkConsultorioDermato(patient){
             return {foundPatient: found, index: index}
         }
     }
- 
+}
+
+
+async function getDermatoPatientList(){
+    let list =  await consultorioDermato.find();
+    return list;
+}
+
+async function deleteDermatoTurnByDni(dni){
+    await consultorioDermato.findOneAndDelete(dni);
+    console.log("Doctor requested turno deleted...");
 }
 
 //ENDOCRINO
@@ -133,6 +148,16 @@ async function checkConsultorioEndocrino(patient){
         }
     }
  
+}
+
+async function getEndocrinoPatientList(){
+    let list =  await consultorioEndocrino.find();
+    return list;
+}
+
+async function deleteEndocrinoTurnByDni(dni){
+    await consultorioEndocrino.findOneAndDelete(dni);
+    console.log("Doctor requested turno deleted...");
 }
 
 //CLINICA
@@ -190,6 +215,11 @@ async function checkConsultorioClinica(patient){
 async function getClinicaPatientList(){
     let list =  await consultorioClinica.find();
     return list;
+}
+
+async function deleteClinicaTurnByDni(dni){
+    await consultorioClinica.findOneAndDelete(dni);
+    console.log("Doctor requested turno deleted...");
 }
 
 

@@ -271,6 +271,12 @@ app.get("/clinicaPatientList", async function(req, res){
     res.send(list);
 })
 
+app.post("/deleteClinicaTurnByDni", async function(req, res){
+    let dni = req.body;
+    await db_handler.deleteClinicaTurnByDni(dni);
+    res.status(200).end();
+})
+
 //check if sessions are online
 app.get("/checkAllSessionOnline", function(req, res){
 

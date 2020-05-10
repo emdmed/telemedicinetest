@@ -15,9 +15,6 @@ var token;
 
 let globalSession;
 
-//check if session is created (notify petient when a doctor is going to be online)
-
-
 function createSession(){
     $.ajax({
         url: "/createsessionEndocrino",
@@ -51,6 +48,9 @@ $("body").on("click", "#paciente_endocrino", function(){
             token = data.token;
 
             initializeSession();
+        },
+        error: function(){
+          alert("Error al generar Token");
         }
     })
 })
@@ -84,9 +84,6 @@ async function initPatientConsultorio(){
     })
   }
 }
-
-
-
 
 // Handling all of our errors here by alerting them
 function handleError(error) {
@@ -126,7 +123,6 @@ function handleError(error) {
     });
 
     session.on("streamDestroyed", function(event) {
-    
       $.ajax({
         url: "/deleteMyEndocrinoTurn",
         method: "POST",
@@ -134,14 +130,10 @@ function handleError(error) {
         success: function(res){
           console.log("turno borrado");
           alert("Finalizó la consulta");
-
         }
       })
-
-    });
-
-  
-  }
+  });
+}
 
 $("body").on("click", "#end_call", function(session){
 
@@ -156,10 +148,7 @@ $("body").on("click", "#end_call", function(session){
       console.log(res);
     }
   })
-
 })
-
-
 
 async function checkLoggedInPatient(){
   let status;
@@ -192,3 +181,42 @@ async function checkLoggedInPatient(){
   }
   return status;
 }
+
+$("body").on("click", "#get_endocrino_patient_list", function(){
+  $(".patients_here").empty();
+  
+  $.ajax({
+    url:"/endocrinoPatientList",
+    method: "GET",
+    success: function(res){
+      console.log(res)
+      let data = res;
+   
+      data.forEach(element => {
+        $(".patients_here").append(`
+        
+          <div class="form-row my-auto" id="${element.dni}">
+            <p class="mr-1 my-auto">${element.email}</p>
+            <p class="mx-1 my-auto">${element.dni}</p>
+            <button class="btn btn-sm btn-danger mx-1 my-auto delete_patient" id="${element.dni}">x</button>
+          </div>
+
+        `)
+      });
+    }
+  })
+})
+
+$("body").on("click", ".delete_patient", function(){
+
+  let dni = $(this).attr("id");
+
+  $.ajax({
+    url: "/deleteEndocrinoTurnByDni",
+    method: "POST",
+    data: {dni: dni},
+    success: function(){
+      console.log("deleted! ");
+    }
+  })
+})

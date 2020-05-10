@@ -17,7 +17,6 @@ let globalSession;
 
 //check if session is created (notify petient when a doctor is going to be online)
 
-
 function createSession(){
     $.ajax({
         url: "/createsessionClinica",
@@ -51,32 +50,43 @@ $("body").on("click", "#paciente_clinica", function(){
             token = data.token;
 
             initializeSession();
+        },
+        error: function(){
+          alert("Error al generar Token");
         }
     })
 })
 
 function initPatientConsultorio(){
-  $.ajax({
-    url: "/createtokenclinica",
-    method: "GET",
-    success: function(res){
-        let data = res;
-        console.log("apikey ", data.apiKey, "token ", data.token);
-        apiKey = data.apiKey;
-        sessionId = data.sessionId;
-        token = data.token;
 
-        initializeSession();
-    },
-    error: function(){
-        alert("El consultorio no se encuentra disponible");
-        window.location= "https://telemedclinicas.herokuapp.com";
-    }
-})
+  let status = await checkLoggedInPatient();
+
+  if(status === false){
+    console.log("Init patient consultorio status is ", status);
+
+  } else {
+    console.log("Init patient consultorio status is ", status)
+    console.log("Creating token...");
+
+    $.ajax({
+      url: "/createtokenclinica",
+      method: "GET",
+      success: function(res){
+          let data = res;
+          console.log("apikey ", data.apiKey, "token ", data.token);
+          apiKey = data.apiKey;
+          sessionId = data.sessionId;
+          token = data.token;
+  
+          initializeSession();
+      },
+      error: function(){
+          //alert("El consultorio no se encuentra disponible");
+          //window.location= "https://telemedclinicas.herokuapp.com";
+      }
+    })
+  }
 }
-
-
-
 
 // Handling all of our errors here by alerting them
 function handleError(error) {
@@ -87,7 +97,6 @@ function handleError(error) {
   
   function initializeSession() {
     var session = OT.initSession(apiKey, sessionId);
-    console.log("initsession ", "apikey", apiKey,  "sessionid", sessionId, "token ", token)
     globalSession = session;
   
     // Subscribe to a newly created stream
@@ -127,11 +136,8 @@ function handleError(error) {
 
         }
       })
-
-    });
-
-  
-  }
+  });
+}
 
 $("body").on("click", "#end_call", function(session){
 
@@ -149,27 +155,73 @@ $("body").on("click", "#end_call", function(session){
 
 })
 
+async function checkLoggedInPatient(){
+  let status;
+  let user = JSON.parse(localStorage.getItem("HCJSM_user"));
+  console.log("checked user", user)
+
+  if (user === undefined){
+    console.log("Necesita Ingresar para ser atendido");
+    status = false;
+  } else {
+    //check if user is on waiting line and check index 
+    await $.ajax({
+      url: "/checkConsultorioClinica",
+      method: "POST",
+      data: user,
+      success: function(res){
+        let data = res;
+        if(data === false){
+          console.log("Debe sacar turno para ser atendido");
+          status = false;
+        } else {
+          status = true;
+        }
+      },
+      error: function(){
+        console.log("error");
+        status = false
+      }
+    })
+  }
+  return status;
+}
 
 $("body").on("click", "#get_clinica_patient_list", function(){
-
+  $(".patients_here").empty();
+  
   $.ajax({
     url:"/clinicaPatientList",
     method: "GET",
     success: function(res){
       console.log(res)
       let data = res;
+   
       data.forEach(element => {
         $(".patients_here").append(`
         
           <div class="form-row my-auto" id="${element.dni}">
-            <p class="mr-1 my-auto">email@email.com</p>
-            <p class="mx-1 my-auto">32609598</p>
-            <button class="btn btn-sm btn-danger mx-1 my-auto delete_patient" id="id="${element.dni}"">x</button>
+            <p class="mr-1 my-auto">${element.email}</p>
+            <p class="mx-1 my-auto">${element.dni}</p>
+            <button class="btn btn-sm btn-danger mx-1 my-auto delete_patient" id="${element.dni}">x</button>
           </div>
 
         `)
       });
     }
   })
+})
 
+$("body").on("click", ".delete_patient", function(){
+
+  let dni = $(this).attr("id");
+
+  $.ajax({
+    url: "/deleteClinicaTurnByDni",
+    method: "POST",
+    data: {dni: dni},
+    success: function(){
+      console.log("deleted! ");
+    }
+  })
 })
