@@ -163,7 +163,7 @@ async function checkLoggedInPatient(){
     await $.ajax({
       url: "/checkConsultorioEndocrino",
       method: "POST",
-      data: user,
+      data: user[0],
       success: function(res){
         let data = res;
         if(data === false){
