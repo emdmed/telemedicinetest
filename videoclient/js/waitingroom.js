@@ -68,6 +68,35 @@ if (!STORED_PATIENT){
             })
     
         }, 5000);
+    } else if (turno.consultorio === "clinica"){
+        console.log("Turno ya solicitado, esperando...")
+        $("#go_to_waiting_line").hide();
+        $("#wait_in_line_icon").show();
+
+        let checkturn = setInterval(() => {
+            //check first if there is a registered patient on db
+            $.ajax({
+                url: "/checkConsultorioClinica",
+                method: "POST",
+                data: STORED_PATIENT[0],
+                success: function(res){
+                    let data = res;
+
+                    if(data.index === 0){
+                        $("#turn_clinica").show();
+                        clearInterval(checkturn);
+                        $("#wait_in_line_icon").hide();
+                    }
+
+                    console.log("mi turno es el ", data.index);
+                    $("#clinica_turn_number").text(data.index + " pacientes antes que usted");
+                },
+                error: function(){
+                   
+                }
+            })
+    
+        }, 5000);
     }
 
 }
@@ -274,6 +303,17 @@ $("body").on("click", "#delete_localstorage", function(){
             window.location.reload();
         }
     })
+
+    $.ajax({
+        url: "/deleteMyClinicaTurn",
+        method: "POST",
+        data: STORED_PATIENT[0],
+        success: function(res){
+            console.log(res);
+            localStorage.removeItem("turno");
+            window.location.reload();
+        }
+    })
  
 
 })
@@ -293,6 +333,10 @@ function checkAllSessionOnline(){
         if(sessions.dermato !== undefined){
             $("#dermato_doctor_status").text("Médico atendiendo, por favor espere");
         } else {$("#dermato_doctor_status").text("Médico no disponible, por favor espere");}
+
+        if(sessions.clinica !== undefined){
+            $("#clinica_doctor_status").text("Médico atendiendo, por favor espere");
+        } else {$("#clinica_doctor_status").text("Médico no disponible, por favor espere");}
         
         $(".waitinroom_status_message").text("A continuación podrá ver los médicos disponibles.");
 
