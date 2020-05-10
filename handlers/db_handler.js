@@ -186,6 +186,7 @@ async function deleteMyClinicaTurn(patient){
 }
 
 async function checkConsultorioClinica(patient){
+    console.log("Looking in db for: ", patient);
     let found = await consultorioClinica.find(patient);
     let list = await consultorioClinica.find();
 
@@ -205,7 +206,7 @@ async function checkConsultorioClinica(patient){
                     index = i
                 } else {}
             }
-
+            console.log("found! ",  {foundPatient: found, index: index})
             return {foundPatient: found, index: index}
         }
     }
