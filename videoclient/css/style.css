@@ -2111,8 +2111,8 @@ CONTACT PAGE
 
 #publisher {
   position: absolute;
-  width: 240px;
-  height: 240px;
+  width: 150px;
+  height: 150px;
   bottom: 0px;
   left: 10px;
   z-index: 100;
@@ -2146,18 +2146,12 @@ CONTACT PAGE
   z-index: 100;
 }
 
-#end_call{
-  position: relative;
-  top: 10px;
-  left:5px;
-  background-color: #7c3131;
-  color: white;
-  border-style: solid;
-  border-color: #7c3131;
-  padding: 9px;
-  border-radius: 10px;
-  z-index: 100;
+
+
+.modal-dialog{
+  z-index: 101 !important;
 }
+
 
 #wait_in_line_icon{
   animation-name: spin;

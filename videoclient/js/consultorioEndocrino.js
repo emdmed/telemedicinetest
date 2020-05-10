@@ -55,24 +55,34 @@ $("body").on("click", "#paciente_endocrino", function(){
     })
 })
 
-function initPatientConsultorio(){
-  $.ajax({
-    url: "/createtokenendocrino",
-    method: "GET",
-    success: function(res){
-        let data = res;
-        console.log("apikey ", data.apiKey, "token ", data.token);
-        apiKey = data.apiKey;
-        sessionId = data.sessionId;
-        token = data.token;
+async function initPatientConsultorio(){
 
-        initializeSession();
-    },
-    error: function(){
-        alert("El consultorio no se encuentra disponible");
-        window.location= "https://telemedclinicas.herokuapp.com";
-    }
-})
+  let status = await checkLoggedInPatient();
+
+  if(status === false){
+    console.log("Init patient consultorio status is ", status)
+
+  } else {
+    console.log("Init patient consultorio status is ", status)
+    console.log("Creating token...");
+    $.ajax({
+      url: "/createtokenendocrino",
+      method: "GET",
+      success: function(res){
+          let data = res;
+          console.log("apikey ", data.apiKey, "token ", data.token);
+          apiKey = data.apiKey;
+          sessionId = data.sessionId;
+          token = data.token;
+  
+          initializeSession();
+      },
+      error: function(){
+          //alert("El consultorio no se encuentra disponible");
+          //window.location= "https://telemedclinicas.herokuapp.com";
+      }
+    })
+  }
 }
 
 
@@ -150,3 +160,35 @@ $("body").on("click", "#end_call", function(session){
 })
 
 
+
+async function checkLoggedInPatient(){
+  let status;
+  let user = JSON.parse(localStorage.getItem("HCJSM_user"));
+  console.log("checked user", user)
+
+  if (user === undefined){
+    console.log("Necesita Ingresar para ser atendido");
+    status = false;
+  } else {
+    //check if user is on waiting line and check index 
+    await $.ajax({
+      url: "/checkConsultorioEndocrino",
+      method: "POST",
+      data: user,
+      success: function(res){
+        let data = res;
+        if(data === false){
+          console.log("Debe sacar turno para ser atendido");
+          status = false;
+        } else {
+          status = true;
+        }
+      },
+      error: function(){
+        console.log("error");
+        status = false
+      }
+    })
+  }
+  return status;
+}

@@ -15,3 +15,8 @@ medico: dermato@hcjsm.com 1111
 Domingo
 [] - consultorio clinica
 [] - consultorio cirugia
+
+SECURITY
+[] - avoid someone entering consultorioClinica.htlm and seeing the consultation
+    *check if he is on the turn list and in what index, if index not 0 alert and redirect
+    

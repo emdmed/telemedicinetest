@@ -21,6 +21,7 @@ const db_handler = {
     checkConsultorioClinica,
     enterClinicaWaitingLine,
     deleteMyClinicaTurn,
+    getClinicaPatientList,
     login: loginModule
 }
 
@@ -184,6 +185,11 @@ async function checkConsultorioClinica(patient){
         }
     }
  
+}
+
+async function getClinicaPatientList(){
+    let list =  await consultorioClinica.find();
+    return list;
 }
 
 

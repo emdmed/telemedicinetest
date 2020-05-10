@@ -150,3 +150,26 @@ $("body").on("click", "#end_call", function(session){
 })
 
 
+$("body").on("click", "#get_clinica_patient_list", function(){
+
+  $.ajax({
+    url:"/clinicaPatientList",
+    method: "GET",
+    success: function(res){
+      console.log(res)
+      let data = res;
+      data.forEach(element => {
+        $(".patients_here").append(`
+        
+          <div class="form-row my-auto" id="${element.dni}">
+            <p class="mr-1 my-auto">email@email.com</p>
+            <p class="mx-1 my-auto">32609598</p>
+            <button class="btn btn-sm btn-danger mx-1 my-auto delete_patient" id="id="${element.dni}"">x</button>
+          </div>
+
+        `)
+      });
+    }
+  })
+
+})

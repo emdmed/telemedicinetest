@@ -103,7 +103,7 @@ app.get("/createtokenendocrino", function(req, res){
         res.json({sessionId: sessionEndocrino, token, apiKey}).end();
     }catch{
         console.log("patient video ", "token ",token, "session ", sessionEndocrino);
-        res.send(400).end();
+        res.status(400).end();
     }
 })
 
@@ -264,6 +264,11 @@ app.post("/deleteMyClinicaTurn", async function(req, res){
     }catch(error){
         res.status(400).end();
     }
+})
+
+app.get("/clinicaPatientList", async function(req, res){
+    let list = await db_handler.getClinicaPatientList();
+    res.send(list);
 })
 
 //check if sessions are online

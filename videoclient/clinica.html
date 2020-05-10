@@ -5,18 +5,50 @@
     <title> Consultorio Clinica </title>
     <link href="./css/style.css" rel="stylesheet" type="text/css">
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-    <button class="btn btn-primary" id="init_clinica_room">Iniciar Consultorio</button>
-    <button class="btn btn-primary" id="end_call">Finalizar consulta</button>
+    <button class="btn btn-sm btn-primary" id="init_clinica_room">Iniciar Consultorio</button>
+    <button class="btn btn-sm btn-primary" id="get_clinica_patient_list"  data-toggle="modal" data-target="#exampleModalCenter">Pacientes</button>
+    <button class="btn btn-sm btn-primary" id="end_call">Finalizar consulta</button>
 
     <div id="videos">
         <div id="subscriber"></div>
         <div id="publisher"></div>
     </div>
 
+
+    <!--MODAL-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Listado de pacientes</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body patients_here">
+                <div class="form-row my-auto">
+                    <p class="mr-1 my-auto">email@email.com</p>
+                    <p class="mx-1 my-auto">32609598</p>
+                    <button class="btn btn-sm btn-danger mx-1 my-auto">x</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+
     <script type="text/javascript" src="./js/jquery.min.js"></script>
     <script type="text/javascript" src="./js/consultorioClinica.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="./plugins/bootstrap/js/popper.min.js"></script>
+    <script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>
