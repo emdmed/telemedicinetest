@@ -76,6 +76,7 @@ $("body").on("click", "#go_to_dermato_waiting_line", function(){
 
     //remove all other consultorios cards
     $(".endocrino-card").remove();
+    $(".clinica-card").remove();
 
     $.ajax({
         url: "/dermatoWaitingLine",
@@ -136,6 +137,7 @@ $("body").on("click", "#go_to_endocrino_waiting_line", function(){
 
     //remove all other consultorios cards
     $(".dermato-card").remove();
+    $(".clinica-card").remove();
 
     $.ajax({
         url: "/endocrinoWaitingLine",
@@ -192,7 +194,8 @@ $("body").on("click", "#go_to_endocrino_waiting_line", function(){
 $("body").on("click", "#go_to_clinica_waiting_line", function(){
 
     //remove all other consultorios cards
-    $(".clinica-card").remove();
+    $(".dermato-card").remove();
+    $(".endocrino-card").remove();
 
     $.ajax({
         url: "/clinicaWaitingLine",
