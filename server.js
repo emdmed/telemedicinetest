@@ -21,6 +21,7 @@ let url = "https://telemedclinicas.herokuapp.com";
 
 let sessionDermato;
 let sessionEndocrino;
+let sessionClinica;
 
 app.use(express.static(__dirname + "/videoclient"));
 
@@ -67,16 +68,30 @@ app.get("/createsessionEndocrino", function(req, res){
     });
 })
 
+app.get("/createsessionClinica", function(req, res){
+    opentok.createSession(function(err, session) {
+        if (err) return console.log(err);
+        let token = session.generateToken()
+
+        sessionClinica = session.sessionId;
+
+        res.json({
+            apiKey,
+            sessionId: session.sessionId,
+            token
+        }).end();
+    });
+})
+
 app.get("/createtokendermato", function(req, res){
     let token;
     try{
         token = opentok.generateToken(sessionDermato);
     }catch{
         res.send(400).end();
+        console.log("patient video ", "token ",token, "session ", sessionDermato);
+        res.json({sessionId: sessionDermato, token, apiKey}).end();
     }
-
-    console.log("patient video ", "token ",token, "session ", sessionDermato);
-    res.json({sessionId: sessionDermato, token, apiKey}).end();
 })
 
 app.get("/createtokenendocrino", function(req, res){
@@ -90,9 +105,19 @@ app.get("/createtokenendocrino", function(req, res){
         console.log("patient video ", "token ",token, "session ", sessionEndocrino);
         res.send(400).end();
     }
+})
 
-
-
+app.get("/createtokenclinica", function(req, res){
+    let token;
+    try{
+        console.log("clinica session", sessionClinica);
+        token = opentok.generateToken(sessionClinica);
+        console.log("patient video ", "token ",token, "session ", sessionClinica);
+        res.json({sessionId: sessionClinica, token, apiKey}).end();
+    }catch{
+        console.log("patient video ", "token ",token, "session ", sessionClinica);
+        res.send(400).end();
+    }
 })
 
 //login
@@ -108,11 +133,14 @@ app.post("/contact", async function(req, res){
         console.log(storeUser[0]);
         console.log("stored user ", storeUser[0].type, storeUser[0].service );
         if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
-            res.send({url: `${url}/dermato.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/dermato.html`, storeUser}).status(200).end();
         } else if(storeUser[0].type === "doctor" && storeUser[0].service === "endocrino"){
-            res.send({url: `${url}/endocrino.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/endocrino.html`, storeUser}).status(200).end();
+
+        } else if (storeUser[0].type === "doctor" && storeUser[0].service === "clinica"){
+            res.send({url: `${testurl}/clinica.html`, storeUser}).status(200).end();
         } else {
-            res.send({url: `${url}/waitingroom.html`, storeUser}).status(200).end();
+            res.send({url: `${testurl}/waitingroom.html`, storeUser}).status(200).end();
         }
     }
 
@@ -199,12 +227,49 @@ app.post("/deleteMyEndocrinoTurn", async function(req, res){
     }
 })
 
+//CLINICA
+app.post("/checkConsultorioClinica", async function(req, res){
+
+    let data = req.body;
+    console.log(data);
+    let found = await db_handler.checkConsultorioClinica(data);
+    console.log("found patient", found);
+    res.send(found).end();
+
+})
+
+app.post("/clinicaWaitingLine", async function(req, res){
+    let data = req.body;
+    try{
+        let enterWaitingLine = await db_handler.enterClinicaWaitingLine(data);
+        console.log("enterWaitingLine value ", enterWaitingLine);
+        if(enterWaitingLine.denied === true){
+            res.send(enterWaitingLine);
+        } else {
+            res.status(200).end();
+        }
+      
+    }catch(error){
+        //res.status(400).end();
+    }
+
+})
+
+app.post("/deleteMyClinicaTurn", async function(req, res){
+    let data = req.body;
+    try{
+        await db_handler.deleteMyClinicaTurn(data);
+        console.log("turn deleted");
+        res.status(200).end();
+    }catch(error){
+        res.status(400).end();
+    }
+})
 
 //check if sessions are online
-
 app.get("/checkAllSessionOnline", function(req, res){
 
-    res.send({dermato: sessionDermato, endocrino: sessionEndocrino});
+    res.send({dermato: sessionDermato, endocrino: sessionEndocrino, clinica: sessionClinica});
 
 })
 
@@ -220,6 +285,13 @@ app.get("/deleteEndocrinoSession", function(req, res){
 app.get("/deleteDermatoSession", function(req, res){
 
     sessionDermato = undefined;
+    res.status(200).end();
+
+})
+
+app.get("/deleteClinicaSession", function(req, res){
+
+    sessionClinica = undefined;
     res.status(200).end();
 
 })

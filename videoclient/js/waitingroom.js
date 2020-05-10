@@ -149,7 +149,7 @@ $("body").on("click", "#go_to_endocrino_waiting_line", function(){
                 alert("Error, el paciente ya se encuentra en la lista de espera (Borrar paciente de db)");
             } else {
                 $("#go_to_endocrino_waiting_line").hide();
-                localStorage.setItem("turno", JSON.stringify({consultorio: "endndocrino", status: true}));
+                localStorage.setItem("turno", JSON.stringify({consultorio: "endocrino", status: true}));
     
                 $("#wait_in_line_icon").show();
                 $("#go_to_endocrino_waiting_line").hide();
@@ -172,6 +172,63 @@ $("body").on("click", "#go_to_endocrino_waiting_line", function(){
                             }
     
                             $("#endocrino_turn_number").text(data.index + " pacientes antes que usted");
+                        },
+                        error: function(){
+                           alert("Error al ingresar al consultorio")
+                        }
+                    })
+            
+                }, 5000);
+            }
+          
+        },
+        error: function(error){
+            alert("Error al solicitar turno", error);
+        }
+    })
+
+})
+
+$("body").on("click", "#go_to_clinica_waiting_line", function(){
+
+    //remove all other consultorios cards
+    $(".clinica-card").remove();
+
+    $.ajax({
+        url: "/clinicaWaitingLine",
+        method: "POST",
+        data: STORED_PATIENT[0],
+        success: function(res){
+            console.log(res);
+            let getinline = res;
+
+            if(getinline.denied === true){
+                alert("Error, el paciente ya se encuentra en la lista de espera (Borrar paciente de db)");
+            } else {
+                $("#go_to_clinica_waiting_line").hide();
+                localStorage.setItem("turno", JSON.stringify({consultorio: "clinica", status: true}));
+    
+                $("#wait_in_line_icon").show();
+                $("#go_to_clinica_waiting_line").hide();
+    
+                let checkturn = setInterval(() => {
+                    //check order in line
+                    $.ajax({
+                        url: "/checkConsultorioClinica",
+                        method: "POST",
+                        data: STORED_PATIENT[0],
+                        success: function(res){
+                            let data = res;
+    
+                            console.log(data);
+    
+                            if(data.index === 0){
+                                $("#turn_clinica").show();
+                                clearInterval(checkturn);
+                                $("#wait_in_line_icon").hide();
+                            }
+    
+                            $("#clinica_turn_number").text(data.index + " pacientes antes que usted");
                         },
                         error: function(){
                            alert("Error al ingresar al consultorio")
