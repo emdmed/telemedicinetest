@@ -6,6 +6,7 @@ const apiKey = "46727622";
 const mongoose = require("mongoose")
 const api_handler = require("./handlers/api_handler");
 const db_handler = require("./handlers/db_handler");
+const ENV_URL = require("./config");
 var OpenTok = require('opentok'),
     opentok = new OpenTok(apiKey, "6a01eb366bfe5759ebd5b18033894f50dd01338c");
 
@@ -132,14 +133,14 @@ app.post("/contact", async function(req, res){
         console.log(storeUser[0]);
         console.log("stored user ", storeUser[0].type, storeUser[0].service );
         if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
-            res.send({url: `${url}/dermato.html`, storeUser}).status(200).end();
+            res.send({url: `${ENV_URL}/dermato.html`, storeUser}).status(200).end();
         } else if(storeUser[0].type === "doctor" && storeUser[0].service === "endocrino"){
-            res.send({url: `${url}/endocrino.html`, storeUser}).status(200).end();
+            res.send({url: `${ENV_URL}/endocrino.html`, storeUser}).status(200).end();
 
         } else if (storeUser[0].type === "doctor" && storeUser[0].service === "clinica"){
-            res.send({url: `${url}/clinica.html`, storeUser}).status(200).end();
+            res.send({url: `${ENV_URL}/clinica.html`, storeUser}).status(200).end();
         } else {
-            res.send({url: `${url}/waitingroom.html`, storeUser}).status(200).end();
+            res.send({url: `${ENV_URL}/waitingroom.html`, storeUser}).status(200).end();
         }
     }
 

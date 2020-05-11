@@ -2,6 +2,7 @@ let STORED_PATIENT = JSON.parse(localStorage.getItem("HCJSM_user"));
 
 if (!STORED_PATIENT){
     alert("Error al validar paciente, por favor vuelva a ingresar");
+    window.location = ENV_URL;
 } else {
 
     //turno already taken?
@@ -33,7 +34,7 @@ if (!STORED_PATIENT){
                         $("#turn_dermato").show();
                         clearInterval(checkturn);
                         $("#wait_in_line_icon").hide();
-                        $("#go_to_endocrino_waiting_line").hide();
+                        $("#go_to_dermato_waiting_line").hide();
                     }
 
                     console.log("mi turno es el ", data.index);
