@@ -13,7 +13,7 @@ medico: dermato@hcjsm.com 1111
 [] - handle cuando turno es true en localstorage, sacar los turnos de los servicios nos correspondientes del DOM
 
 Domingo
-[] - consultorio clinica
+[x] - consultorio clinica
 [] - consultorio cirugia
 
 SECURITY

@@ -13,7 +13,12 @@ if (!STORED_PATIENT){
 
         console.log("Turno ya solicitado, esperando...")
         $("#go_to_waiting_line").hide();
-        $("#wait_in_line_icon").show();
+        
+        //remove other cards
+        $(".clinica-card").remove();
+        $(".endocrino-card").remove();
+
+        $(".turn_already_taken").text("Ya tiene un turno de " + turno.consultorio + " por favor aguarde a ser atendido")
 
         let checkturn = setInterval(() => {
             //check first if there is a registered patient on db
@@ -28,6 +33,7 @@ if (!STORED_PATIENT){
                         $("#turn_dermato").show();
                         clearInterval(checkturn);
                         $("#wait_in_line_icon").hide();
+                        $("#go_to_endocrino_waiting_line").hide();
                     }
 
                     console.log("mi turno es el ", data.index);
@@ -42,7 +48,12 @@ if (!STORED_PATIENT){
     } else if (turno.consultorio === "endocrino"){
         console.log("Turno ya solicitado, esperando...")
         $("#go_to_waiting_line").hide();
-        $("#wait_in_line_icon").show();
+        //$("#wait_in_line_icon").show();
+        $(".turn_already_taken").text("Ya tiene un turno de " + turno.consultorio + " por favor aguarde a ser atendido");
+
+        //remove other cards
+        $(".clinica-card").remove();
+        $(".dermato-card").remove();
 
         let checkturn = setInterval(() => {
             //check first if there is a registered patient on db
@@ -57,6 +68,7 @@ if (!STORED_PATIENT){
                         $("#turn_endocrino").show();
                         clearInterval(checkturn);
                         $("#wait_in_line_icon").hide();
+                        $("#go_to_endocrino_waiting_line").hide();
                     }
 
                     console.log("mi turno es el ", data.index);
@@ -71,7 +83,12 @@ if (!STORED_PATIENT){
     } else if (turno.consultorio === "clinica"){
         console.log("Turno ya solicitado, esperando...")
         $("#go_to_waiting_line").hide();
-        $("#wait_in_line_icon").show();
+        //$("#wait_in_line_icon").show();
+        $(".turn_already_taken").text("Ya tiene un turno de " + turno.consultorio + " por favor aguarde a ser atendido");
+
+         //remove other cards
+         $(".endocrino-card").remove();
+         $(".dermato-card").remove();
 
         let checkturn = setInterval(() => {
             //check first if there is a registered patient on db
@@ -86,6 +103,7 @@ if (!STORED_PATIENT){
                         $("#turn_clinica").show();
                         clearInterval(checkturn);
                         $("#wait_in_line_icon").hide();
+                        $("#go_to_clinica_waiting_line").hide();
                     }
 
                     console.log("mi turno es el ", data.index);
@@ -119,7 +137,7 @@ $("body").on("click", "#go_to_dermato_waiting_line", function(){
                 alert("Error, el paciente ya se encuentra en la lista de espera (Borrar paciente de db)");
             } else {
                 $("#go_to_waiting_line").hide();
-                localStorage.setItem("turno", JSON.stringify({consultorio: "endndocrino", status: true}));
+                localStorage.setItem("turno", JSON.stringify({consultorio: "dermato", status: true}));
     
                 $("#wait_in_line_icon").show();
                 $("#go_to_waiting_line").hide();
@@ -141,8 +159,6 @@ $("body").on("click", "#go_to_dermato_waiting_line", function(){
                                 $("#wait_in_line_icon").hide();
                             }
     
-                       
-    
                             console.log("mi turno es el ", data.index);
                             $("#dermato_turn_number").text(data.index + " pacientes antes que usted");
                         },
@@ -159,7 +175,6 @@ $("body").on("click", "#go_to_dermato_waiting_line", function(){
             alert("Error al solicitar turno", error);
         }
     })
-
 })
 
 $("body").on("click", "#go_to_endocrino_waiting_line", function(){
