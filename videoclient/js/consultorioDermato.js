@@ -168,10 +168,9 @@ async function checkLoggedInPatient(){
           alert("Debe sacar turno para ser atendido");
           status = false;
         } else {
-          if(turno.length > 0 ){
+          if(turno.consultorio === "dermato"){
             status = true;
           } else {
-            console.log("this");
             status = false;
           }
         }
