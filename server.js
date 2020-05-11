@@ -132,14 +132,14 @@ app.post("/contact", async function(req, res){
         console.log(storeUser[0]);
         console.log("stored user ", storeUser[0].type, storeUser[0].service );
         if(storeUser[0].type === "doctor" && storeUser[0].service === "dermato"){
-            res.send({url: `${testurl}/dermato.html`, storeUser}).status(200).end();
+            res.send({url: `${url}/dermato.html`, storeUser}).status(200).end();
         } else if(storeUser[0].type === "doctor" && storeUser[0].service === "endocrino"){
-            res.send({url: `${testurl}/endocrino.html`, storeUser}).status(200).end();
+            res.send({url: `${url}/endocrino.html`, storeUser}).status(200).end();
 
         } else if (storeUser[0].type === "doctor" && storeUser[0].service === "clinica"){
-            res.send({url: `${testurl}/clinica.html`, storeUser}).status(200).end();
+            res.send({url: `${url}/clinica.html`, storeUser}).status(200).end();
         } else {
-            res.send({url: `${testurl}/waitingroom.html`, storeUser}).status(200).end();
+            res.send({url: `${url}/waitingroom.html`, storeUser}).status(200).end();
         }
     }
 
