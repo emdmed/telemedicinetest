@@ -77,8 +77,8 @@ async function initPatientConsultorio(){
           initializeSession();
       },
       error: function(){
-          //alert("El consultorio no se encuentra disponible");
-          //window.location= "https://telemedclinicas.herokuapp.com";
+          alert("El consultorio no se encuentra disponible");
+          window.location= "https://telemedclinicas.herokuapp.com";
       }
     })
   }
