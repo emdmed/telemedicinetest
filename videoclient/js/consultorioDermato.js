@@ -148,7 +148,8 @@ async function checkLoggedInPatient(){
   let user = JSON.parse(localStorage.getItem("HCJSM_user"));
   let turno = JSON.parse(localStorage.getItem("turno"));
 
-  console.log("turno", turno);
+  console.log("turno", turno, turno.length);
+ 
 
   console.log("checked user", user)
 
@@ -170,6 +171,7 @@ async function checkLoggedInPatient(){
           if(turno.length > 0 ){
             status = true;
           } else {
+            console.log("this");
             status = false;
           }
         }
