@@ -148,6 +148,8 @@ async function checkLoggedInPatient(){
   let user = JSON.parse(localStorage.getItem("HCJSM_user"));
   let turno = JSON.parse(localStorage.getItem("turno"));
 
+  console.log("turno", turno);
+
   console.log("checked user", user)
 
   if (user === undefined){
