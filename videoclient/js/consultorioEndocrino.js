@@ -150,6 +150,8 @@ $("body").on("click", "#end_call", function(session){
 async function checkLoggedInPatient(){
   let status;
   let user = JSON.parse(localStorage.getItem("HCJSM_user"));
+  let turno = JSON.parse(localStorage.getItem("turno"));
+
   console.log("checked user", user)
 
   if (user === undefined){
@@ -167,7 +169,12 @@ async function checkLoggedInPatient(){
           console.log("Debe sacar turno para ser atendido");
           status = false;
         } else {
-          status = true;
+          if(turno.length > 0){
+            status = true;
+          } else {
+            status = false;
+          }
+     
         }
       },
       error: function(){
