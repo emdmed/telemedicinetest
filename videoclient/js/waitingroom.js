@@ -38,7 +38,11 @@ if (!STORED_PATIENT){
                     }
 
                     console.log("mi turno es el ", data.index);
-                    $("#dermato_turn_number").text(data.index + " pacientes antes que usted");
+                    if(data.index === undefined || data.index === "undefined"){
+                        $("#dermato_turn_number").text("Error, por favor vuelva a sacar turno");
+                    } else {
+                        $("#dermato_turn_number").text(data.index + " pacientes antes que usted");
+                    }          
                 },
                 error: function(){
                    
@@ -73,7 +77,11 @@ if (!STORED_PATIENT){
                     }
 
                     console.log("mi turno es el ", data.index);
-                    $("#endocrino_turn_number").text(data.index + " pacientes antes que usted");
+                    if(data.index === undefined || data.index === "undefined"){
+                        $("#endocrino_turn_number").text("Error, por favor vuelva a sacar turno");
+                    } else {
+                        $("#endocrino_turn_number").text(data.index + " pacientes antes que usted");
+                    }     
                 },
                 error: function(){
                    
@@ -108,7 +116,12 @@ if (!STORED_PATIENT){
                     }
 
                     console.log("mi turno es el ", data.index);
-                    $("#clinica_turn_number").text(data.index + " pacientes antes que usted");
+                    if(data.index === undefined || data.index === "undefined"){
+                        $("#clinica_turn_number").text("Error, por favor vuelva a sacar turno");
+                    } else {
+                        $("#clinica_turn_number").text(data.index + " pacientes antes que usted");
+                    }
+                   
                 },
                 error: function(){
                    

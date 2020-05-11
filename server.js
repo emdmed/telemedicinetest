@@ -143,7 +143,6 @@ app.post("/contact", async function(req, res){
             res.send({url: `${ENV_URL}/waitingroom.html`, storeUser}).status(200).end();
         }
     }
-
 })
 
 
