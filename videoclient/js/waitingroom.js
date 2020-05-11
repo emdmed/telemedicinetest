@@ -360,7 +360,9 @@ function checkAllSessionOnline(){
         } else {$("#endocrino_doctor_status").text("Médico no disponible, por favor espere");}
 
         if(sessions.dermato !== undefined){
-            $("#dermato_doctor_status").text("Médico atendiendo, por favor espere");
+            $("#dermato_doctor_status").text("Médico atendiendo");
+            $("#turn_dermato").attr("class", "btn btn-block btn-success");
+            $("#turn_dermato").text("Ingresar");
         } else {$("#dermato_doctor_status").text("Médico no disponible, por favor espere");}
 
         if(sessions.clinica !== undefined){
