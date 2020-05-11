@@ -13,7 +13,7 @@ if (!STORED_PATIENT){
     } else if (turno.consultorio === "dermato") {
 
         console.log("Turno ya solicitado, esperando...")
-        $("#go_to_waiting_line").hide();
+        $("#go_to_dermato_waiting_line").hide();
         
         //remove other cards
         $(".clinica-card").remove();
@@ -52,7 +52,7 @@ if (!STORED_PATIENT){
         }, 5000);
     } else if (turno.consultorio === "endocrino"){
         console.log("Turno ya solicitado, esperando...")
-        $("#go_to_waiting_line").hide();
+        $("#go_to_endocrino_waiting_line").hide();
         //$("#wait_in_line_icon").show();
         $(".turn_already_taken").text("Ya tiene un turno de " + turno.consultorio + " por favor aguarde a ser atendido");
 
@@ -91,7 +91,7 @@ if (!STORED_PATIENT){
         }, 5000);
     } else if (turno.consultorio === "clinica"){
         console.log("Turno ya solicitado, esperando...")
-        $("#go_to_waiting_line").hide();
+        $("#go_to_clinica_waiting_line").hide();
         //$("#wait_in_line_icon").show();
         $(".turn_already_taken").text("Ya tiene un turno de " + turno.consultorio + " por favor aguarde a ser atendido");
 
@@ -150,11 +150,11 @@ $("body").on("click", "#go_to_dermato_waiting_line", function(){
             if(getinline.denied === true){
                 alert("Error, el paciente ya se encuentra en la lista de espera (Borrar paciente de db)");
             } else {
-                $("#go_to_waiting_line").hide();
+                $("#go_to_dermato_waiting_line").hide();
                 localStorage.setItem("turno", JSON.stringify({consultorio: "dermato", status: true}));
     
                 $("#wait_in_line_icon").show();
-                $("#go_to_waiting_line").hide();
+                $("#go_to_dermato_waiting_line").hide();
     
                 let checkturn = setInterval(() => {
                     //check order in line

@@ -126,6 +126,7 @@ function handleError(error) {
         success: function(res){
           console.log("turno borrado");
           alert("Finalizó la consulta");
+          localStorage.removeItem("turno");
         }
       })
   });
