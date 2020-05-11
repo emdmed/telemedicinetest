@@ -343,7 +343,6 @@ $("body").on("click", "#delete_localstorage", function(){
             window.location.reload();
         }
     })
- 
 
 })
 
@@ -357,17 +356,33 @@ function checkAllSessionOnline(){
         console.log(sessions);
         if(sessions.endocrino !== undefined){
             $("#endocrino_doctor_status").text("Médico atendiendo, por favor espere");
-        } else {$("#endocrino_doctor_status").text("Médico no disponible, por favor espere");}
+            $("#turn_endocrino").attr("class", "btn btn-block btn-success");
+            $("#turn_endocrino").text("Ingresar");
+        } else {
+            $("#endocrino_doctor_status").text("Médico no disponible, por favor espere");
+            $("#turn_endocrino").attr("class", "btn btn-block btn-primary");
+            $("#turn_encrino").text("Espere...");
+        }
 
         if(sessions.dermato !== undefined){
             $("#dermato_doctor_status").text("Médico atendiendo");
             $("#turn_dermato").attr("class", "btn btn-block btn-success");
             $("#turn_dermato").text("Ingresar");
-        } else {$("#dermato_doctor_status").text("Médico no disponible, por favor espere");}
+        } else {
+            $("#dermato_doctor_status").text("Médico no disponible, por favor espere");
+            $("#turn_dermato").attr("class", "btn btn-block btn-primary");
+            $("#turn_dermato").text("Espere...");
+        }
 
         if(sessions.clinica !== undefined){
             $("#clinica_doctor_status").text("Médico atendiendo, por favor espere");
-        } else {$("#clinica_doctor_status").text("Médico no disponible, por favor espere");}
+            $("#turn_clinica").attr("class", "btn btn-block btn-success");
+            $("#turn_clinica").text("Ingresar");
+        } else {
+            $("#clinica_doctor_status").text("Médico no disponible, por favor espere");
+            $("#turn_clinica").attr("class", "btn btn-block btn-primary");
+            $("#turn_clinica").text("Espere...");
+        }
         
         $(".waitinroom_status_message").text("A continuación podrá ver los médicos disponibles.");
 
