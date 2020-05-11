@@ -169,7 +169,7 @@ async function checkLoggedInPatient(){
       success: function(res){
         let data = res;
         if(data === false){
-          console.log("Debe sacar turno para ser atendido");
+          alert("Debe sacar turno para ser atendido");
           status = false;
         } else {
           if(turno.length > 0){
