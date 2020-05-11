@@ -169,12 +169,11 @@ async function checkLoggedInPatient(){
           alert("Debe sacar turno para ser atendido");
           status = false;
         } else {
-          if(turno.length > 0){
+          if(turno.consultorio === "endocrino"){
             status = true;
           } else {
             status = false;
           }
-     
         }
       },
       error: function(){
