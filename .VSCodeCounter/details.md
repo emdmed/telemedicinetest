@@ -1,16 +1,17 @@
 # Details
 
-Date : 2020-05-10 21:38:49
+Date : 2020-05-11 18:50:14
 
 Directory c:\Users\Aquilae\proyectos\videotest
 
-Total : 90 files,  30867 codes, 1047 comments, 5153 blanks, all 37067 lines
+Total : 91 files,  30927 codes, 1041 comments, 5158 blanks, all 37126 lines
 
 [summary](results.md)
 
 ## Files
 | filename | language | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
+| [config.js](/config.js) | JavaScript | 5 | 0 | 3 | 8 |
 | [handlers/api_functions/patientList.js](/handlers/api_functions/patientList.js) | JavaScript | 15 | 1 | 3 | 19 |
 | [handlers/api_functions/scorePatient.js](/handlers/api_functions/scorePatient.js) | JavaScript | 75 | 13 | 24 | 112 |
 | [handlers/api_handler.js](/handlers/api_handler.js) | JavaScript | 3 | 0 | 5 | 8 |
@@ -22,13 +23,13 @@ Total : 90 files,  30867 codes, 1047 comments, 5153 blanks, all 37067 lines
 | [models/patientModel.js](/models/patientModel.js) | JavaScript | 9 | 1 | 3 | 13 |
 | [package-lock.json](/package-lock.json) | JSON | 1,422 | 0 | 1 | 1,423 |
 | [package.json](/package.json) | JSON | 19 | 0 | 1 | 20 |
-| [server.js](/server.js) | JavaScript | 228 | 14 | 69 | 311 |
+| [server.js](/server.js) | JavaScript | 229 | 14 | 68 | 311 |
 | [todo.md](/todo.md) | Markdown | 15 | 0 | 7 | 22 |
 | [videoclient/about.html](/videoclient/about.html) | HTML | 478 | 35 | 71 | 584 |
 | [videoclient/browserconfig.xml](/videoclient/browserconfig.xml) | XML | 2 | 0 | 0 | 2 |
 | [videoclient/clinica.html](/videoclient/clinica.html) | HTML | 41 | 3 | 8 | 52 |
 | [videoclient/css/app.css](/videoclient/css/app.css) | CSS | 28 | 0 | 6 | 34 |
-| [videoclient/css/style.css](/videoclient/css/style.css) | CSS | 1,775 | 142 | 277 | 2,194 |
+| [videoclient/css/style.css](/videoclient/css/style.css) | CSS | 1,774 | 142 | 277 | 2,193 |
 | [videoclient/dermato.html](/videoclient/dermato.html) | HTML | 41 | 3 | 6 | 50 |
 | [videoclient/endocrino.html](/videoclient/endocrino.html) | HTML | 41 | 3 | 9 | 53 |
 | [videoclient/images/icon/if_envelope-stats_1291753.svg](/videoclient/images/icon/if_envelope-stats_1291753.svg) | XML | 1 | 0 | 0 | 1 |
@@ -38,14 +39,14 @@ Total : 90 files,  30867 codes, 1047 comments, 5153 blanks, all 37067 lines
 | [videoclient/index.html](/videoclient/index.html) | HTML | 120 | 44 | 42 | 206 |
 | [videoclient/js/app.js](/videoclient/js/app.js) | JavaScript | 60 | 6 | 11 | 77 |
 | [videoclient/js/config.js](/videoclient/js/config.js) | JavaScript | 5 | 0 | 3 | 8 |
-| [videoclient/js/consultorioClinica.js](/videoclient/js/consultorioClinica.js) | JavaScript | 178 | 11 | 34 | 223 |
-| [videoclient/js/consultorioDermato.js](/videoclient/js/consultorioDermato.js) | JavaScript | 175 | 10 | 30 | 215 |
-| [videoclient/js/consultorioEndocrino.js](/videoclient/js/consultorioEndocrino.js) | JavaScript | 179 | 10 | 29 | 218 |
+| [videoclient/js/consultorioClinica.js](/videoclient/js/consultorioClinica.js) | JavaScript | 186 | 9 | 33 | 228 |
+| [videoclient/js/consultorioDermato.js](/videoclient/js/consultorioDermato.js) | JavaScript | 184 | 8 | 33 | 225 |
+| [videoclient/js/consultorioEndocrino.js](/videoclient/js/consultorioEndocrino.js) | JavaScript | 187 | 8 | 30 | 225 |
 | [videoclient/js/jquery.min.js](/videoclient/js/jquery.min.js) | JavaScript | 1 | 1 | 1 | 3 |
 | [videoclient/js/main.js](/videoclient/js/main.js) | JavaScript | 115 | 6 | 37 | 158 |
 | [videoclient/js/telemed.js](/videoclient/js/telemed.js) | JavaScript | 0 | 0 | 1 | 1 |
 | [videoclient/js/theme.js](/videoclient/js/theme.js) | JavaScript | 47 | 10 | 24 | 81 |
-| [videoclient/js/waitingroom.js](/videoclient/js/waitingroom.js) | JavaScript | 278 | 15 | 79 | 372 |
+| [videoclient/js/waitingroom.js](/videoclient/js/waitingroom.js) | JavaScript | 308 | 15 | 79 | 402 |
 | [videoclient/manifest.json](/videoclient/manifest.json) | JSON | 41 | 0 | 0 | 41 |
 | [videoclient/pacienteClinica.html](/videoclient/pacienteClinica.html) | HTML | 21 | 2 | 3 | 26 |
 | [videoclient/pacienteDermato.html](/videoclient/pacienteDermato.html) | HTML | 18 | 0 | 4 | 22 |

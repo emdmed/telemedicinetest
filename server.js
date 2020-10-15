@@ -8,17 +8,17 @@ const api_handler = require("./handlers/api_handler");
 const db_handler = require("./handlers/db_handler");
 const ENV_URL = require("./config");
 var OpenTok = require('opentok'),
-    opentok = new OpenTok(apiKey, "6a01eb366bfe5759ebd5b18033894f50dd01338c");
+    opentok = new OpenTok(apiKey, "apikey");
 
 const server = require("http").createServer(app);
 
 //DB
-const remotemongo = "mongodb://admin:sanatorio123@ds054118.mlab.com:54118/labos";
+const remotemongo = "dburlhere";
 //connect to mongoose
 mongoose.connect(remotemongo, {useNewUrlParser: true, useUnifiedTopology: true });
 
 let testurl = "http://localhost:3000";
-let url = "https://telemedclinicas.herokuapp.com";
+let url = "produrlhere";
 
 let sessionDermato;
 let sessionEndocrino;

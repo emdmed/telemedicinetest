@@ -1,19 +1,19 @@
 # Summary
 
-Date : 2020-05-10 21:38:49
+Date : 2020-05-11 18:50:14
 
 Directory c:\Users\Aquilae\proyectos\videotest
 
-Total : 90 files,  30867 codes, 1047 comments, 5153 blanks, all 37067 lines
+Total : 91 files,  30927 codes, 1041 comments, 5158 blanks, all 37126 lines
 
 [details](details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| CSS | 9 | 9,729 | 168 | 2,288 | 12,185 |
+| CSS | 9 | 9,728 | 168 | 2,288 | 12,184 |
 | XML | 11 | 9,204 | 0 | 5 | 9,209 |
-| JavaScript | 29 | 7,286 | 590 | 2,122 | 9,998 |
+| JavaScript | 30 | 7,347 | 584 | 2,127 | 10,058 |
 | SCSS | 25 | 1,964 | 151 | 498 | 2,613 |
 | JSON | 3 | 1,482 | 0 | 2 | 1,484 |
 | HTML | 9 | 940 | 132 | 204 | 1,276 |
@@ -24,16 +24,16 @@ Total : 90 files,  30867 codes, 1047 comments, 5153 blanks, all 37067 lines
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 90 | 30,867 | 1,047 | 5,153 | 37,067 |
+| . | 91 | 30,927 | 1,041 | 5,158 | 37,126 |
 | handlers | 5 | 417 | 32 | 94 | 543 |
 | handlers\api_functions | 2 | 90 | 14 | 27 | 131 |
 | handlers\modules | 1 | 109 | 12 | 14 | 135 |
 | models | 4 | 30 | 4 | 12 | 46 |
-| videoclient | 77 | 28,736 | 997 | 4,969 | 34,702 |
-| videoclient\css | 2 | 1,803 | 142 | 283 | 2,228 |
+| videoclient | 77 | 28,790 | 991 | 4,972 | 34,753 |
+| videoclient\css | 2 | 1,802 | 142 | 283 | 2,227 |
 | videoclient\images | 4 | 4 | 0 | 0 | 4 |
 | videoclient\images\icon | 4 | 4 | 0 | 0 | 4 |
-| videoclient\js | 10 | 1,038 | 69 | 249 | 1,356 |
+| videoclient\js | 10 | 1,093 | 63 | 252 | 1,408 |
 | videoclient\plugins | 27 | 23,201 | 513 | 3,764 | 27,478 |
 | videoclient\plugins\animate-css | 1 | 3,055 | 11 | 558 | 3,624 |
 | videoclient\plugins\bootstrap | 4 | 3,265 | 348 | 843 | 4,456 |
